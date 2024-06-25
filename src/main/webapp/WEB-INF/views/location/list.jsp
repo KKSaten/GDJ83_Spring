@@ -10,24 +10,26 @@
 </head>
 <body>
 	
-	<h1>부서 리스트</h1>
+	<h1>지역 리스트</h1>
 	
 	<div class="row col-md-8">
-		<table class="table table-hover table-primary">
+		<table class="table table-hover table-warning">
 			<thead>
 				<tr>
-					<th>부서 번호</th>
-					<th>부서 명</th>
-					<th>관리자</th>
+					<th>지역 번호</th>
+					<th>거리 주소</th>
+					<th>주</th>
+					<th>도시</th>
 				</tr>
 			</thead>
 			
 			<tbody>
 				<c:forEach items="${list}" var="dto">
 					<tr>
-						<td>${dto.department_id}</td>
-						<td>${dto.department_name}</td>
-						<td>${dto.manager_id}</td>
+						<td>${dto.location_id}</td>
+						<td>${dto.street_address}</td>
+						<td>${dto.state_province}</td>
+						<td>${dto.city}</td>
 					</tr>
 				
 				</c:forEach>
