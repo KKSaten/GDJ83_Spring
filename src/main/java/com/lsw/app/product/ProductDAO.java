@@ -88,10 +88,22 @@ public class ProductDAO {
 		st.close();
 		con.close();
 		
-		
 		return productDTO;
 	}
 	
+	
+	
+	public void add() throws Exception {
+		//연결
+		Connection con = dbConnection.getConnection();
+		
+		//sql
+		String sql = "INSERT INTO ITEMS VALUES(ITEM_ID_SEQ.NEXTVAL, ?, ?, ?)";
+		
+		//미리 전송
+		PreparedStatement st = con.pre
+		
+	}
 	
 	
 	
