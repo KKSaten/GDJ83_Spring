@@ -34,6 +34,11 @@
 				</tr>
 			</tbody>
 		</table>
+			
+		<form action="./delete?item_id=${dto.item_id}" method="post">
+			<button type="submit" class="btn btn-primary">상품 삭제</button>
+		</form>
+		
 	</div>
 	
 	

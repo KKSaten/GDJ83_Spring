@@ -115,8 +115,33 @@ public class ProductDAO {
 		con.close();
 		
 		
-		return result;
+		return result;	
+	}
+	
+	
+	
+	public int delete(ProductDTO productDTO) throws Exception {
+		//DB연결
+		Connection con = dbConnection.getConnection();
 		
+		//sql
+		String sql = "DELETE ITEMS WHERE ITEM_ID=?";
+		
+		//미리 전송
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		//?처리
+		st.setInt(1, productDTO.getItem_id());
+		
+		//최종
+		int result = st.executeUpdate();
+		
+		
+		st.close();
+		con.close();
+		
+		
+		return result;
 		
 	}
 	

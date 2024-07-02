@@ -49,6 +49,8 @@ public class ProductController {
 	public String add(Model model, ProductDTO productDTO) throws Exception {
 		int result = productService.add(productDTO);
 		
+		System.out.println(productDTO.getItem_name());
+		
 		String url = "";
 		if(result > 0) {
 			url = "redirect:./list";
@@ -56,6 +58,23 @@ public class ProductController {
 			url = "commons/message";
 			model.addAttribute("result", "상품 추가 실패");
 			model.addAttribute(url, "./list");
+		}
+		
+		return url;
+		
+	}
+	
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public String delete(Model model, ProductDTO productDTO) throws Exception {
+		int result = productService.delete(productDTO);
+		
+		String url = "";
+		if(result > 0) {
+			url = "redirect:./list";
+		} else {
+			url = "commons/message";
+			model.addAttribute("result", "상품 삭제 실패");
+			model.addAttribute("url", "./list");
 		}
 		
 		return url;
