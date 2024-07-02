@@ -93,17 +93,32 @@ public class ProductDAO {
 	
 	
 	
-//	public void add() throws Exception {
-//		//연결
-//		Connection con = dbConnection.getConnection();
-//		
-//		//sql
-//		String sql = "INSERT INTO ITEMS VALUES(ITEM_ID_SEQ.NEXTVAL, ?, ?, ?)";
-//		
-//		//미리 전송
-//		PreparedStatement st = con.pre
-//		
-//	}
+	public int add(ProductDTO productDTO) throws Exception {
+		//연결
+		Connection con = dbConnection.getConnection();
+		
+		//sql
+		String sql = "INSERT INTO ITEMS VALUES(ITEM_ID_SEQ.NEXTVAL, ?, ?, ?)";
+		
+		//미리 전송
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		//?처리
+		st.setString(1, productDTO.getItem_name() );
+		st.setString(2, productDTO.getItem_detail() );
+		st.setDouble(3, productDTO.getItem_rate() );
+		
+		//최종 전송 및 결과 처리
+		int result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		
+		return result;
+		
+		
+	}
 	
 	
 	
