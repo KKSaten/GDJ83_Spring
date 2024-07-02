@@ -1,6 +1,5 @@
 package com.lsw.app.product;
 
-import java.nio.file.Path;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
