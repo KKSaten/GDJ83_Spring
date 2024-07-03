@@ -83,12 +83,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "update", method = RequestMethod.GET)
-	public void update(ProductDTO productDTO) throws Exception {	
+	public String update(Model model, ProductDTO productDTO) throws Exception {	
 		productDTO = productService.getDetail(productDTO);
-	}
-	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String update(Model model, ProductDTO productDTO) throws Exception {
-		productDTO = productService.getDetail(productDTO);
+		System.out.println(productDTO);
 		
 		String url = "";
 		if(productDTO != null) {
@@ -101,6 +98,14 @@ public class ProductController {
 		}
 		
 		return url;
+	}
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(ProductDTO productDTO) throws Exception {
+		
+		int result = productService.update(productDTO);
+		
+		return "redirect:./list";
+
 	}
 	
 	
