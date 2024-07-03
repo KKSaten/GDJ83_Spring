@@ -15,8 +15,8 @@ public class ProductService {
 		return productDAO.getList();
 	}
 	
-	public ProductDTO getDetail(int num) throws Exception {
-		return productDAO.getDetail(num);
+	public ProductDTO getDetail(ProductDTO productDTO) throws Exception {
+		return productDAO.getDetail(productDTO);
 	}
 	
 	public int add(ProductDTO productDTO) throws Exception {
@@ -25,6 +25,10 @@ public class ProductService {
 	
 	public int delete(ProductDTO productDTO) throws Exception {
 		return productDAO.delete(productDTO);
+	}
+	
+	public int update(ProductDTO productDTO) throws Exception {
+		return productDAO.update(productDTO);
 	}
 
 }

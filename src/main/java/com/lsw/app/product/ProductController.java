@@ -24,8 +24,8 @@ public class ProductController {
 	
 	
 	@RequestMapping(value = "detail")
-	public String getDetail(Model model, int item_id) throws Exception{
-		ProductDTO productDTO = productService.getDetail(item_id);
+	public String getDetail(Model model, ProductDTO productDTO) throws Exception{
+		productDTO = productService.getDetail(productDTO);
 		
 		String url = "";
 		
@@ -64,6 +64,7 @@ public class ProductController {
 		
 	}
 	
+	
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	public String delete(Model model, ProductDTO productDTO) throws Exception {
 		int result = productService.delete(productDTO);
@@ -80,6 +81,28 @@ public class ProductController {
 		return url;
 		
 	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public void update(ProductDTO productDTO) throws Exception {	
+		productDTO = productService.getDetail(productDTO);
+	}
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(Model model, ProductDTO productDTO) throws Exception {
+		productDTO = productService.getDetail(productDTO);
+		
+		String url = "";
+		if(productDTO != null) {
+			model.addAttribute("dto", productDTO);
+			url = "product/update";
+		} else {
+			model.addAttribute("result", "상품 수정 실패");
+			model.addAttribute("url", "./list");
+			url = "commons/message";
+		}
+		
+		return url;
+	}
+	
 	
 	
 	

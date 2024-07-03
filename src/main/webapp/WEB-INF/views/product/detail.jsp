@@ -39,6 +39,10 @@
 			<button type="submit" class="btn btn-primary">상품 삭제</button>
 		</form>
 		
+		<form action="./update?item_id=${dto.item_id}" method="get">
+			<button type="submit" class="btn btn-primary">상품 수정</button>
+		</form>
+		
 	</div>
 	
 	
