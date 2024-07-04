@@ -6,23 +6,23 @@
   
 <mapper namespace="com.lsw.app.product.ProductDAO">
 	
-	<select id="getList" resultType="com.lsw.app.product.ProductDTO">
+	<select id="getList" resultType="ProductDTO"> <!-- mybatis-config에서 com.lsw.app.product.ProductDTO의 별칭을 ProductDTO 설정했음 -->
 		SELECT * FROM ITEMS ORDER BY ITEM_ID ASC
 	</select>
 	
-	<select id="getDetail" resultType="com.lsw.app.product.ProductDTO" parameterType="com.lsw.app.product.ProductDTO">
+	<select id="getDetail" resultType="ProductDTO" parameterType="ProductDTO">
 		SELECT * FROM ITEMS WHERE ITEM_ID = #{item_id}
 	</select>
 	
-	<select id="add" parameterType="com.lsw.app.product.ProductDTO">
+	<select id="add" parameterType="ProductDTO">
 		INSERT INTO ITEMS VALUES(ITEM_ID_SEQ.NEXTVAL, #{item_name}, #{item_detail}, #{item_rate})
 	</select>
 	
-	<select id="delete" parameterType="com.lsw.app.product.ProductDTO">
+	<select id="delete" parameterType="ProductDTO">
 		DELETE ITEMS WHERE ITEM_ID= #{item_id}
 	</select>
 	
-	<select id="update" parameterType="com.lsw.app.product.ProductDTO">
+	<select id="update" parameterType="ProductDTO">
 		UPDATE ITEMS SET ITEM_ID=#{item_id}, ITEM_NAME=#{item_name}, ITEM_DETAIL=#{item_detail}, ITEM_RATE=#{item_rate} WHERE ITEM_ID=#{item_id}
 	</select>
 	

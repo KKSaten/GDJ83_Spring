@@ -34,12 +34,13 @@
 				</tr>
 			</tbody>
 		</table>
-			
-		<button type = "submit" class="btn btn-primary" onclick="location.href ='./update?item_id=${dto.item_id}' ">상품 수정</button>
 		
-		<form action="./delete?item_id=${dto.item_id}" method="post">
-			<button type="submit" class="btn col-md-2 btn-primary">상품 삭제</button>
-		</form>
+		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+			<button type = "submit" class="btn btn-primary" onclick="location.href ='./update?item_id=${dto.item_id}' ">상품 수정</button>
+			<form action="./delete?item_id=${dto.item_id}" method="post">
+				<button type="submit" class="btn btn-danger">상품 삭제</button>
+			</form>
+		</div>
 		
 		
 	</div>

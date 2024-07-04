@@ -4,6 +4,11 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -23,15 +28,27 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	public String home(HttpServletRequest request) {
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		//하위 내장객체에서 상위 내장객체 꺼낼 수 있음
+		//근데 상위 내장객체에서 하위 내장객체는 꺼낼 수 없음
+		//오래 살아남는 놈이 상위임. 서블릿>세션>리퀘스트>페이지
+		//상위가 있어도 하위는 없을 수도 있으니까
+		HttpSession session = request.getSession();
 		
-		String formattedDate = dateFormat.format(date);
 		
-		model.addAttribute("serverTime", formattedDate );
+		
+		
+//		Cookie[] cookies = request.getCookies();
+//		for(Cookie c: cookies) {
+//			System.out.println(c.getName());
+//			System.out.println(c.getValue());
+//		}
+		
+//		Cookie cookie = new Cookie("test", "SW");
+//		cookie.setMaxAge(60);
+//		response.addCookie(cookie);
+		
 		
 		return "index";
 	}
