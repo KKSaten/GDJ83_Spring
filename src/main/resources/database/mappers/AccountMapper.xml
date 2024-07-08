@@ -6,8 +6,13 @@
   
 <mapper namespace="com.lsw.app.account.AccountDAO">
 
-	<select id="login" parameterType="AccountDTO" resultType="AccountDTO">
-		SELECT * FROM BANK WHERE MEMBER_ID = #{member_id}
+	<select id="list" parameterType="AccountDTO" resultType="AccountDTO">
+		SELECT BANK_ID, MEMBER_ID, ITEM_ID, OPEN_DATE, BALANCE FROM BANK WHERE MEMBER_ID = #{member_id}
 	</select>
+	
+	<insert id="add" parameterType="AccountDTO">
+		INSERT INTO BANK (BANK_ID, MEMBER_ID, ITEM_ID, OPEN_DATE, BANK_PW, BALANCE)
+		VALUES(#{bank_id}, #{member_id}, #{item_id}, SYSDATE, #{bank_pw}, 0)
+	</insert>
 
 </mapper>

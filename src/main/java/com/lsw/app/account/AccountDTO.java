@@ -1,13 +1,16 @@
 package com.lsw.app.account;
 
+import java.sql.Date;
+
 public class AccountDTO {
 	
 	private String bank_id;
 	private String member_id;
-	private Integer item_id;
-	private String open_date;
+	private Long item_id;
+	private Date open_date;
 	private String bank_pw;
-	private Integer balance;
+	private Long balance;
+	
 	
 	public String getBank_id() {
 		return bank_id;
@@ -21,16 +24,16 @@ public class AccountDTO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	public Integer getItem_id() {
+	public Long getItem_id() {
 		return item_id;
 	}
-	public void setItem_id(Integer item_id) {
+	public void setItem_id(Long item_id) {
 		this.item_id = item_id;
 	}
-	public String getOpen_date() {
+	public Date getOpen_date() {
 		return open_date;
 	}
-	public void setOpen_date(String open_date) {
+	public void setOpen_date(Date open_date) {
 		this.open_date = open_date;
 	}
 	public String getBank_pw() {
@@ -39,12 +42,14 @@ public class AccountDTO {
 	public void setBank_pw(String bank_pw) {
 		this.bank_pw = bank_pw;
 	}
-	public Integer getBalance() {
+	public Long getBalance() {
 		return balance;
 	}
-	public void setBalance(Integer balance) {
+	public void setBalance(Long balance) {
 		this.balance = balance;
 	}
+	
+
 	
 	
 	

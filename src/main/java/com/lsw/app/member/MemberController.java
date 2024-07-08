@@ -1,5 +1,7 @@
 package com.lsw.app.member;
 
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 
 import javax.servlet.http.HttpServletRequest;
@@ -77,11 +79,12 @@ public class MemberController {
 			response.addCookie(cookie);
 		}
 		
-		memberDTO = memberService.login(memberDTO); 
+		//memberDTO = memberService.login(memberDTO);
+		Map<String, Object> map = memberService.login(memberDTO);
 		
 		String url="";
-		if(memberDTO != null) {
-			session.setAttribute("member", memberDTO);
+		if(map != null) {
+			session.setAttribute("member", map);
 			session.setAttribute("account", accountDTO);
 			url="redirect:/";
 			
@@ -112,7 +115,9 @@ public class MemberController {
 	//내정보
 	@RequestMapping(value = "mypage", method = RequestMethod.GET)
 	public void mypage(Model model, HttpSession session) throws Exception {
+		
 
+		
 //		필터에서 만들겠음
 //		String url = "";
 //		if(session.getAttribute("member") == null) {

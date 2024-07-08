@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.lsw.app.member.MemberDTO;
+
 @Repository
 public class AccountDAO {
 	
@@ -15,8 +17,8 @@ public class AccountDAO {
 	private final String NAMESAPCE="com.lsw.app.account.AccountDAO.";
 	
 	
-	public List<AccountDTO> getList() throws Exception {
-		return sqlSession.selectList(NAMESAPCE+"getList");
+	public List<AccountDTO> getList(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectList(NAMESAPCE+"list", memberDTO);
 	}
 	
 	public int add(AccountDTO accountDTO) throws Exception {
