@@ -79,12 +79,11 @@ public class MemberController {
 			response.addCookie(cookie);
 		}
 		
-		//memberDTO = memberService.login(memberDTO);
-		Map<String, Object> map = memberService.login(memberDTO);
+		memberDTO = memberService.login(memberDTO);
 		
 		String url="";
-		if(map != null) {
-			session.setAttribute("member", map);
+		if(memberDTO != null) {
+			session.setAttribute("member", memberDTO);
 			session.setAttribute("account", accountDTO);
 			url="redirect:/";
 			

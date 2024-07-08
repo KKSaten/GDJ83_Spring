@@ -25,10 +25,10 @@
 			
 			<tbody class="table-group-divider">
 				<tr>
-					<td>${member.member.member_id}</td>
-					<td>${member.member.member_name}</td>
-					<td>${member.member.member_phone}</td>
-					<td>${member.member.member_email}</td>
+					<td>${member.member_id}</td>
+					<td>${member.member_name}</td>
+					<td>${member.member_phone}</td>
+					<td>${member.member_email}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -62,7 +62,7 @@
 			
 			<tbody class="table-group-divider">
 				<tr>
-					<c:forEach items="${member.accounts}" var="ac">	
+					<c:forEach items="${member.dtos}" var="ac">	
 						<td>${ac.bank_id}</td>
 						<td>${ac.item_id}</td>
 						<td>${ac.open_date}</td>

@@ -1,5 +1,9 @@
 package com.lsw.app.member;
 
+import java.util.List;
+
+import com.lsw.app.account.AccountDTO;
+
 public class MemberDTO {
 	
 	private String member_id;
@@ -7,8 +11,10 @@ public class MemberDTO {
 	private String member_name;
 	private String member_phone;
 	private String member_email;
+	private List<AccountDTO> dtos;
 	
 	
+
 	public String getMember_id() {
 		return member_id;
 	}
@@ -39,8 +45,12 @@ public class MemberDTO {
 	public void setMember_email(String member_email) {
 		this.member_email = member_email;
 	}
-	
-	
+	public List<AccountDTO> getDtos() {
+		return dtos;
+	}
+	public void setDtos(List<AccountDTO> dtos) {
+		this.dtos = dtos;
+	}
 	
 	
 	

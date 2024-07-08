@@ -14,6 +14,18 @@
 	
 	<h3>계좌 개설 페이지</h3>
 	
+	<form action="/account/add" method="post">
+		<div class="container col-md-3 mt-5 justify-content-center">
+
+			<div class="mb-3">
+				<label for="member_pw" class="form-label">비밀번호</label>
+				<input type="password" class="form-control" id="member_pw"
+				name="member_pw" placeholder="Password">
+			</div>
+			
+		</div>
+	</form>
+	
 	
 	
 	

@@ -6,9 +6,35 @@
   
 <mapper namespace="com.lsw.app.member.MemberDAO">
 
-	<select id="login" parameterType="MemberDTO" resultType="MemberDTO">
-		SELECT * FROM MEMBERS WHERE MEMBER_ID = #{member_id} <!-- 비밀번호는 서비스에서 비교할 것 이유는 나중에 -->
+	<select id="login" parameterType="MemberDTO" resultMap="loginResult">
+		SELECT M.*, B.*
+		FROM MEMBERS M
+			 LEFT JOIN
+			 BANK B
+			 ON M.MEMBER_ID = B.MEMBER_ID
+		WHERE M.MEMBER_ID = #{member_id} <!-- 비밀번호는 서비스에서 비교할 것 이유는 나중에 -->
 	</select>
+	<resultMap type="MemberDTO" id="loginResult">
+		<!-- Primary Key 용도 -->
+		<!--  column="컬럼명" property="setter의 이름" -->
+		<id column="MEMBER_ID" property="member_id"/>
+		<result column="MEMBER_PW" property="member_pw"/>
+		<result column="MEMBER_NAME" property="member_name"/>
+		<result column="MEMBER_PHONE" property="member_phone"/>
+		<result column="MEMBER_EMAIL" property="member_email"/>
+		<!-- 1:N -->
+		<collection property="dtos" javaType="java.util.List" ofType="AccountDTO">
+			<id column="BANK_ID" property="bank_id"/>
+			<result column="MEMBER_ID" property="member_id"/>
+			<result column="ITEM_ID" property="item_id"/>
+			<result column="OPEN_DATE" property="open_date"/>
+			<result column="BANK_PW" property="bank_pw"/>
+			<result column="BALANCE" property="balance"/>
+		</collection>
+		
+	</resultMap>
+	
+	
 	
 	<select id="join" parameterType="MemberDTO">
 		INSERT INTO MEMBERS VALUES(#{member_id}, #{member_pw}, #{member_name},
