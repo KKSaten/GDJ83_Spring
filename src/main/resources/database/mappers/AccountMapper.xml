@@ -6,13 +6,35 @@
   
 <mapper namespace="com.lsw.app.account.AccountDAO">
 
-	<select id="list" parameterType="AccountDTO" resultType="AccountDTO">
+<!-- 	<select id="list" parameterType="AccountDTO" resultType="AccountDTO">
 		SELECT BANK_ID, MEMBER_ID, ITEM_ID, OPEN_DATE, BALANCE FROM BANK WHERE MEMBER_ID = #{member_id}
-	</select>
+	</select> -->
 	
 	<insert id="add" parameterType="AccountDTO">
 		INSERT INTO BANK (BANK_ID, MEMBER_ID, ITEM_ID, OPEN_DATE, BANK_PW, BALANCE)
 		VALUES(#{bank_id}, #{member_id}, #{item_id}, SYSDATE, #{bank_pw}, 0)
 	</insert>
+	
+	<select id="detail" parameterType="AccountDTO" resultMap="detailResult">
+		SELECT B.*, I.*
+		FROM BANK B
+	 	INNER JOIN
+	 	ITEMS I
+	 	ON B.ITEM_ID = I.ITEM_ID 
+		WHERE B.BANK_ID = #{bank_id}
+	</select>
+	
+	<resultMap type="AccountDTO" id="detailResult">
+		<id column="BANK_ID" property="bank_id"/>
+		<result column="ITEM_ID" property="item_id"/>
+		<result column="OPEN_DATE" property="open_date"/>
+		<result column="BALANCE" property="balance"/>
+		<!-- 1:1 -->
+		<association property="productDTO" javaType="ProductDTO">
+			<result column="ITEM_NAME" property="item_name"/>
+			<result column="ITEM_RATE" property="item_rate"/>
+		</association>
+	</resultMap>
+	
 
 </mapper>

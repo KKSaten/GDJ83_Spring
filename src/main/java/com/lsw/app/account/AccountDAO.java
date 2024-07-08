@@ -17,11 +17,15 @@ public class AccountDAO {
 	private final String NAMESAPCE="com.lsw.app.account.AccountDAO.";
 	
 	
-	public List<AccountDTO> getList(MemberDTO memberDTO) throws Exception {
-		return sqlSession.selectList(NAMESAPCE+"list", memberDTO);
-	}
+//	public List<AccountDTO> getList(MemberDTO memberDTO) throws Exception {
+//		return sqlSession.selectList(NAMESAPCE+"list", memberDTO);
+//	}
 	
 	public int add(AccountDTO accountDTO) throws Exception {
 		return sqlSession.insert(NAMESAPCE+"add", accountDTO);
+	}
+		
+	public AccountDTO detail(AccountDTO accountDTO) throws Exception {
+		return sqlSession.selectOne(NAMESAPCE+"detail", accountDTO);
 	}
 }

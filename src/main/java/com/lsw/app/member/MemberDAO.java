@@ -32,6 +32,8 @@ public class MemberDAO {
 		return sqlSession.delete(NAMESAPCE+"delete", memberDTO);
 	}
 	
-	
+	public MemberDTO getDetail(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESAPCE+"mypage", memberDTO);
+	}
 
 }

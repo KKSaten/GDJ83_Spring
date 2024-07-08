@@ -53,4 +53,10 @@ public class MemberService {
 		return memberDAO.delete(memberDTO);
 	}
 
+	
+	public MemberDTO getDetail(MemberDTO memberDTO) throws Exception {
+		return memberDAO.getDetail(memberDTO); 
+	}
+	
+	
 }

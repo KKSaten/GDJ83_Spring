@@ -109,7 +109,9 @@ public class ProductController {
 	}
 	
 	
-	
-	
+	@RequestMapping(value="../account/add", method=RequestMethod.GET )
+	public void addAccount(Model model, ProductDTO productDTO) throws Exception {
+		model.addAttribute("dto", productDTO);
+	}
 
 }

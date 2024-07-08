@@ -3,6 +3,7 @@ package com.lsw.app.member;
 import java.util.List;
 
 import com.lsw.app.account.AccountDTO;
+import com.lsw.app.product.ProductDTO;
 
 public class MemberDTO {
 	
@@ -12,7 +13,7 @@ public class MemberDTO {
 	private String member_phone;
 	private String member_email;
 	private List<AccountDTO> dtos;
-	
+
 	
 
 	public String getMember_id() {

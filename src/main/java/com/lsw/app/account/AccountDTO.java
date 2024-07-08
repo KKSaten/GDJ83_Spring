@@ -2,6 +2,9 @@ package com.lsw.app.account;
 
 import java.sql.Date;
 
+import com.lsw.app.member.MemberDTO;
+import com.lsw.app.product.ProductDTO;
+
 public class AccountDTO {
 	
 	private String bank_id;
@@ -10,8 +13,22 @@ public class AccountDTO {
 	private Date open_date;
 	private String bank_pw;
 	private Long balance;
+	private MemberDTO memberDTO;
+	private ProductDTO productDTO;
 	
 	
+	public MemberDTO getMemberDTO() {
+		return memberDTO;
+	}
+	public void setMemberDTO(MemberDTO memberDTO) {
+		this.memberDTO = memberDTO;
+	}
+	public ProductDTO getProductDTO() {
+		return productDTO;
+	}
+	public void setProductDTO(ProductDTO productDTO) {
+		this.productDTO = productDTO;
+	}
 	public String getBank_id() {
 		return bank_id;
 	}

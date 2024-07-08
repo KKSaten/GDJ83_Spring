@@ -84,7 +84,7 @@ public class MemberController {
 		String url="";
 		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
-			session.setAttribute("account", accountDTO);
+//			session.setAttribute("account", accountDTO);
 			url="redirect:/";
 			
 		}else {
@@ -114,8 +114,10 @@ public class MemberController {
 	//내정보
 	@RequestMapping(value = "mypage", method = RequestMethod.GET)
 	public void mypage(Model model, HttpSession session) throws Exception {
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		memberDTO = memberService.getDetail(memberDTO);
+		model.addAttribute("member", memberDTO);
 		
-
 		
 //		필터에서 만들겠음
 //		String url = "";
@@ -134,7 +136,10 @@ public class MemberController {
 	
 	//내정보 수정
 	@RequestMapping(value = "update", method = RequestMethod.GET)
-	public void update() throws Exception {
+	public void update(HttpSession session, Model model) throws Exception {
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		memberDTO = memberService.getDetail(memberDTO);
+		model.addAttribute("member", memberDTO);
 	}
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(Model model, HttpSession session, MemberDTO memberDTO) throws Exception {

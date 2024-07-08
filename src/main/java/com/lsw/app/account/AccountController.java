@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lsw.app.member.MemberDTO;
+import com.lsw.app.product.ProductDTO;
 
 @Controller
 @RequestMapping("/account/*")
@@ -20,7 +21,8 @@ public class AccountController {
 	
 	
 	@RequestMapping(value="add", method = RequestMethod.GET)
-	public void add(HttpSession session) throws Exception {
+	public void add(HttpSession session, Model model, ProductDTO productDTO) throws Exception {
+		model.addAttribute("dto", productDTO);
 //		
 //		String id = ( (MemberDTO)session.getAttribute("member") ).getMember_id();
 //		accountDTO.setMember_id("id");
@@ -43,8 +45,6 @@ public class AccountController {
 		
 		return "redirect:/";
 	}
-	
-	
 	
 	
 	

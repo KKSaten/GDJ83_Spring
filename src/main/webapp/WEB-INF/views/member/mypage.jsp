@@ -61,14 +61,14 @@
 			
 			
 			<tbody class="table-group-divider">
-				<tr>
-					<c:forEach items="${member.dtos}" var="ac">	
-						<td>${ac.bank_id}</td>
+				<c:forEach items="${member.dtos}" var="ac">	
+					<tr>
+						<td><a href="/account/detail?member_id=${member.member_id}"> ${ac.bank_id}</a></td>
 						<td>${ac.item_id}</td>
 						<td>${ac.open_date}</td>
 						<td>${ac.balance}</td>
-					</c:forEach>	
-				</tr>
+					</tr>
+				</c:forEach>	
 			</tbody>
 		</table>
 		
