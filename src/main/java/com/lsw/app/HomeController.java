@@ -1,6 +1,7 @@
 package com.lsw.app;
 
 import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -29,6 +30,14 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest request) {
+		
+//		//1
+//		Calendar ca = Calendar.getInstance();
+//		
+//		long l = ca.getTimeInMillis();
+//		String s = String.valueOf(1);
+		
+		
 		
 		//하위 내장객체에서 상위 내장객체 꺼낼 수 있음
 		//근데 상위 내장객체에서 하위 내장객체는 꺼낼 수 없음

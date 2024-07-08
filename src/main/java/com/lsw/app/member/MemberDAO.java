@@ -1,7 +1,5 @@
 package com.lsw.app.member;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,12 +13,20 @@ public class MemberDAO {
 	private final String NAMESAPCE="com.lsw.app.member.MemberDAO.";
 	
 	
+	public int join(MemberDTO memberDTO) throws Exception {
+		return sqlSession.insert(NAMESAPCE+"join", memberDTO);
+	}
+	
 	public MemberDTO login(MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectOne(NAMESAPCE+"login", memberDTO);
 	}
 	
-	public int join(MemberDTO memberDTO) throws Exception {
-		return sqlSession.insert(NAMESAPCE+"join", memberDTO);
+	public int update(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESAPCE+"update", memberDTO);
+	}
+	
+	public int delete(MemberDTO memberDTO) throws Exception {
+		return sqlSession.delete(NAMESAPCE+"delete", memberDTO);
 	}
 	
 	

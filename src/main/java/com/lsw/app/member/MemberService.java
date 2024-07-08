@@ -1,6 +1,5 @@
 package com.lsw.app.member;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +10,10 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
+	
+	public int join(MemberDTO memberDTO) throws Exception {
+		return memberDAO.join(memberDTO);
+	}
 	
 	public MemberDTO login(MemberDTO memberDTO) throws Exception {
 		MemberDTO result = memberDAO.login(memberDTO);
@@ -27,8 +30,14 @@ public class MemberService {
 		return result;
 	}
 	
-	public int join(MemberDTO memberDTO) throws Exception {
-		return memberDAO.join(memberDTO);
+	
+	public int update(MemberDTO memberDTO) throws Exception {
+		return memberDAO.update(memberDTO);
+	}
+	
+	
+	public int delete(MemberDTO memberDTO) throws Exception {
+		return memberDAO.delete(memberDTO);
 	}
 
 }

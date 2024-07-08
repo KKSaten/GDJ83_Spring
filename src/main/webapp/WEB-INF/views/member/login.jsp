@@ -27,8 +27,8 @@
 			</div>
 			
 			<div class="mb-3 form-check">
-    			<input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember">
-    			<label class="form-check-label" for="exampleCheck1" >ID기억하기</label>
+    			<input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember" checked>
+    			<label class="form-check-label" for="exampleCheck1">ID기억하기</label>
   			</div>
 			<div class="justify-content-md-end">
 				<button type="submit" class="btn btn-primary">로그인</button>
