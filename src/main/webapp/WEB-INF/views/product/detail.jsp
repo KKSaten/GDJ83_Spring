@@ -42,7 +42,7 @@
 		
 		<div class="d-grid gap-2 d-md-flex">
 			<button type = "submit" class="btn btn-primary" onclick="location.href ='./update?item_id=${dto.item_id}' ">상품 수정</button>
-			<form action="./delete?item_id=${dto.item_id}" method="post">
+			<form action="./delete" method="post">
 				<button type="submit" class="btn btn-danger">상품 삭제</button>
 			</form>
 		</div>

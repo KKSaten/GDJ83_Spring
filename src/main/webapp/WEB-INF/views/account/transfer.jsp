@@ -11,16 +11,23 @@
 <body>
 	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 	
-	
-	<h3>계좌 개설 페이지</h3>
-	
-	<form action="/account/add" method="post">
+	<form action="./transfer" method="post">
 		<div class="container col-md-3 mt-5 justify-content-center">
-		
+			
 			<div class="mb-3">
-				<label for="item_id" class="form-label">상품 번호</label>
-				<input type="text" class="form-control" id="item_id"
-				name="item_id" value="${dto.item_id}">
+				<input type="hidden" name="bank_id" value="${account.bank_id}">
+			</div>
+			
+			<div class="mb-3">
+				<label for="account_u" class="form-label">입금하실 계좌번호</label>
+				<input type="text" class="form-control" id="account_u"
+				name="account_u">
+			</div>
+			
+			<div class="mb-3">
+				<label for="difference" class="form-label">입금하실 금액</label>
+				<input type="text" class="form-control" id="difference"
+				name="difference">
 			</div>
 			
 			<div class="mb-3">
@@ -30,19 +37,24 @@
 			</div>
 			
 			<div class="justify-content-md-end">
-				<form action="/account/add" method="post">
-					<button type="submit" class="btn btn-primary">계좌 개설</button>
-				</form>
+				<button type="submit" class="btn btn-primary">계좌 이체</button>
 			</div>
-			
 		</div>
+		
 	</form>
 	
 	
 	
 	
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
 	<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
 </body>
 </html>

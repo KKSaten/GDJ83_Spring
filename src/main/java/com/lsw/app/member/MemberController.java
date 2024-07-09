@@ -68,7 +68,6 @@ public class MemberController {
 			HttpServletResponse response, HttpSession session,
 			String remember, AccountDTO accountDTO) throws Exception {
 		
-		System.out.println("hello");
 		if(remember != null) {
 			Cookie cookie = new Cookie("remember", memberDTO.getMember_id());
 			cookie.setMaxAge(60*60);

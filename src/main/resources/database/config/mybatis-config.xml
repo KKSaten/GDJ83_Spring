@@ -12,6 +12,7 @@
 														
 		<typeAlias type="com.lsw.app.member.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.lsw.app.account.AccountDTO" alias="AccountDTO"/>
+		<typeAlias type="com.lsw.app.account.BankingDTO" alias="BankingDTO"/>
 		<typeAlias type="java.util.Map" alias="Map"/>
 		
 	</typeAliases>

@@ -63,7 +63,7 @@
 			<tbody class="table-group-divider">
 				<c:forEach items="${member.dtos}" var="ac">	
 					<tr>
-						<td><a href="/account/detail?member_id=${member.member_id}"> ${ac.bank_id}</a></td>
+						<td><a href="/account/detail?bank_id=${ac.bank_id}"> ${ac.bank_id}</a></td>
 						<td>${ac.item_id}</td>
 						<td>${ac.open_date}</td>
 						<td>${ac.balance}</td>
@@ -81,9 +81,6 @@
 		</div>
 		
 	</div>
-
-
-
 
 
 

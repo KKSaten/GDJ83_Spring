@@ -36,5 +36,35 @@
 		</association>
 	</resultMap>
 	
+	
+	<update id="transfer" parameterType="BankingDTO">
+		UPDATE BANK B
+		SET BALANCE=BALANCE+
+		CASE 
+			WHEN BANK_ID=#{bank_id} THEN -#{difference}
+			WHEN BANK_ID=#{account_u} THEN #{difference}
+			ELSE 0
+		END
+		WHERE BANK_ID IN(#{bank_id}, #{account_u})
+	</update>
+	
+	<insert id="transferList" parameterType="BankingDTO">
+		INSERT INTO BANK_INFOS
+		VALUES (#{bank_id}, SYSDATE,
+		(SELECT BALANCE FROM BANK WHERE BANK_ID = #{bank_id}), -#{difference}, #{account_u})
+	</insert>
+	
+	<insert id="transferList_u" parameterType="BankingDTO">
+		INSERT INTO BANK_INFOS
+		VALUES (#{account_u}, SYSDATE,
+		(SELECT BALANCE FROM BANK WHERE BANK_ID = #{account_u}), #{difference}, #{bank_id})
+	</insert>
+	
+	
+	
+	
+	
+	
+	
 
 </mapper>
