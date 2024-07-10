@@ -13,13 +13,16 @@
 	
 	<form action="./transfer" method="post">
 		<div class="container col-md-3 mt-5 justify-content-center">
-		
-			<div class="mb-3">
-				<label for="member_id" class="form-label">출금하실 계좌</label>
-				<input class="form-control" id="disabledInput" type="text"
-				placeholder="${account.bank_id}" disabled>
-			</div>
 			
+			<input type="hidden" name="bank_id"
+			value="${dto.bank_id}">
+			
+			<div class="mb-3">
+				<label for="bank_id" class="form-label">출금하실 계좌</label>
+				<input class="form-control" id="bank_id" type="text"
+				value="${dto.bank_id}" disabled>
+			</div>
+		
 			<div class="mb-3">
 				<label for="account_u" class="form-label">입금하실 계좌번호</label>
 				<input type="text" class="form-control" id="account_u"

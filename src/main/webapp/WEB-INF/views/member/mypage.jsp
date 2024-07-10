@@ -69,7 +69,7 @@
 			
 			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 				<button type = "submit" class="btn btn-primary"
-					onclick="location.href ='/account/add?member_id=${account.member_id}' ">
+					onclick="location.href ='/product/list' ">
 					계좌 개설
 				</button>
 				

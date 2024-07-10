@@ -44,11 +44,19 @@
 			</div>
 			
 			
-			<div class="mt-5">
+			
+			
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+				<button onclick="btnClick()" class="btn btn-primary">
+					이체 내역
+				</button>
+			</div>
+			
+			<div id="transferList" display="none">
 				<table class="table">
 					<thead>
 						<tr>
-							<th>시간(최신순)</th>
+							<th>시간</th>
 							<th>사용 내역</th>
 							<th>입출금</th>
 							<th>잔액</th>
@@ -60,7 +68,14 @@
 							<tr>
 								<td>${dto.timepoint}</td>						
 								<td>${dto.account_u}</td>
-								<td>${dto.difference}</td>
+
+								<td class="${dto.difference>0?'text-primary':'text-danger'}">
+									<c:choose>
+										<c:when test="${dto.difference>0}">+${dto.difference}</c:when>
+										<c:otherwise>${dto.difference}</c:otherwise>
+									</c:choose>
+								</td>
+								
 								<td>${dto.bal_result}</td>
 							</tr>
 						</c:forEach>
@@ -75,7 +90,16 @@
 	
 	
 	
-	
+	<script>
+	function btnClick() {
+		const mydiv = document.getElementById('transferList');
+		if(transferList.style.display === 'none') {
+			transferList.style.display = 'block';
+		}else {
+			transferList.style.display = 'none';
+		}
+	}
+	</script>
 	
 	
 	<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>

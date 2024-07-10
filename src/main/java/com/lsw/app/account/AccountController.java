@@ -63,14 +63,13 @@ public class AccountController {
 	
 	@RequestMapping(value="transfer", method=RequestMethod.GET)
 	public void transfer(AccountDTO accountDTO, Model model) throws Exception {	
-		model.addAttribute("account", accountDTO);
+		model.addAttribute("dto", accountDTO);
 
 	}
 	@RequestMapping(value="transfer", method=RequestMethod.POST)
-	public String transfer(HttpSession session, AccountDTO accountDTO, TradeDTO tradeDTO, Model model)
+	public String transfer(AccountDTO accountDTO, TradeDTO tradeDTO, Model model)
 			throws Exception {	
-		
-		model.addAttribute("banking", tradeDTO);
+		model.addAttribute("dto", tradeDTO);
 		
 		int result = accountService.transfer(accountDTO, tradeDTO);
 		
