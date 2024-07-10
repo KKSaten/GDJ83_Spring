@@ -11,8 +11,7 @@
 <body>
 	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
-	<div class="container ms-2 mt-3">
-		<div class="row col-md-5">
+	<div class="container col-md-3 mt-4 justify-content-center">
 			<form action="./update" method="post">
 
 				<input type="hidden" name="item_id"
@@ -37,7 +36,6 @@
 				<button type="submit" class="btn btn-primary">수정</button>
 				
 			</form>
-		</div>
 	</div>
 
 

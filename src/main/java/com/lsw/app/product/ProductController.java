@@ -49,8 +49,6 @@ public class ProductController {
 	public String add(Model model, ProductDTO productDTO) throws Exception {
 		int result = productService.add(productDTO);
 		
-		System.out.println(productDTO.getItem_name());
-		
 		String url = "";
 		if(result > 0) {
 			url = "redirect:./list";
@@ -85,7 +83,6 @@ public class ProductController {
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String update(Model model, ProductDTO productDTO) throws Exception {	
 		productDTO = productService.getDetail(productDTO);
-		System.out.println(productDTO);
 		
 		String url = "";
 		if(productDTO != null) {

@@ -11,7 +11,7 @@
 <body>
 	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 	
-		<div class="container col-md-6 justify-content-center">
+		<div class="container col-md-6 mt-4 justify-content-center">
 			<table class="table">
 				<thead>
 					<tr>
@@ -42,6 +42,34 @@
 					계좌 이체
 				</button>
 			</div>
+			
+			
+			<div class="mt-5">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>시간(최신순)</th>
+							<th>사용 내역</th>
+							<th>입출금</th>
+							<th>잔액</th>
+						</tr>
+					</thead>
+					
+					<tbody class="table-group-divider">
+						<c:forEach items="${list}" var="dto">
+							<tr>
+								<td>${dto.timepoint}</td>						
+								<td>${dto.account_u}</td>
+								<td>${dto.difference}</td>
+								<td>${dto.bal_result}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+							
+				</table>		
+			</div>
+			
+			
 			
 		</div>	
 	

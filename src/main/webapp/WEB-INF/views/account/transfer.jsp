@@ -13,9 +13,11 @@
 	
 	<form action="./transfer" method="post">
 		<div class="container col-md-3 mt-5 justify-content-center">
-			
+		
 			<div class="mb-3">
-				<input type="hidden" name="bank_id" value="${account.bank_id}">
+				<label for="member_id" class="form-label">출금하실 계좌</label>
+				<input class="form-control" id="disabledInput" type="text"
+				placeholder="${account.bank_id}" disabled>
 			</div>
 			
 			<div class="mb-3">
@@ -42,12 +44,6 @@
 		</div>
 		
 	</form>
-	
-	
-	
-	
-	
-	
 	
 	
 	

@@ -12,7 +12,7 @@
 	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
 	<form action="./login" method="post">
-		<div class="container col-md-3 mt-5 justify-content-center">
+		<div class="container col-md-3 mt-4 justify-content-center">
 
 			<div class="mb-3">
 				<label for="member_id" class="form-label">아이디</label>

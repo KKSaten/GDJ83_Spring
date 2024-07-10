@@ -14,16 +14,16 @@
 		SELECT * FROM ITEMS WHERE ITEM_ID = #{item_id}
 	</select>
 	
-	<select id="add" parameterType="ProductDTO">
+	<insert id="add" parameterType="ProductDTO">
 		INSERT INTO ITEMS VALUES(ITEM_ID_SEQ.NEXTVAL, #{item_name}, #{item_detail}, #{item_rate})
-	</select>
+	</insert>
 	
-	<select id="delete" parameterType="ProductDTO">
+	<delete id="delete" parameterType="ProductDTO">
 		DELETE ITEMS WHERE ITEM_ID= #{item_id}
-	</select>
+	</delete>
 	
-	<select id="update" parameterType="ProductDTO">
+	<update id="update" parameterType="ProductDTO">
 		UPDATE ITEMS SET ITEM_ID=#{item_id}, ITEM_NAME=#{item_name}, ITEM_DETAIL=#{item_detail}, ITEM_RATE=#{item_rate} WHERE ITEM_ID=#{item_id}
-	</select>
+	</update>
 	
  </mapper>

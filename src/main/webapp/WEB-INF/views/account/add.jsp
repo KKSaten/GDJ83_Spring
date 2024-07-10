@@ -10,9 +10,7 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
-	
-	
-	<h3>계좌 개설 페이지</h3>
+
 	
 	<form action="/account/add" method="post">
 		<div class="container col-md-3 mt-5 justify-content-center">
@@ -29,7 +27,7 @@
 				name="bank_pw" placeholder="Password">
 			</div>
 			
-			<div class="justify-content-md-end">
+			<div class="justify-content-md-end mt-4">
 				<form action="/account/add" method="post">
 					<button type="submit" class="btn btn-primary">계좌 개설</button>
 				</form>

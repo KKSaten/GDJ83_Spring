@@ -11,7 +11,7 @@
 <body>
 	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 	
-	<div class="row col-md-4 ms-2 mt-3">
+	<div class="container col-md-5 mt-4 justify-content-center">
 		<table class="table">
 			<thead>
 				<tr>

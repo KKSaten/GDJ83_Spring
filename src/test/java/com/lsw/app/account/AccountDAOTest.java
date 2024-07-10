@@ -21,5 +21,11 @@ public class AccountDAOTest extends DefaultTest{
 		
 		assertNotNull(accountDTO);
 	}
+	
+	
+//	public void addTest() throws Exception {
+//		TradeDTO tradeDTO 
+//		int result = tradeDTO.add(tradeDTO);
+//	}
 
 }

@@ -11,8 +11,7 @@
 <body>
 	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
-	<div class="container col-md-6 ms-2 mt-3">
-		
+	<div class="container col-md-6 mt-4 justify-content-center">
 		<table class="table">
 			<thead>
 				<tr>
@@ -41,44 +40,47 @@
 			
 			<form action="./delete?member_id=${member.member_id}" method="post">
 				<button type="submit" class="btn btn-danger">회원 탈퇴</button>
-			</form>
+			</form>		
+		</div>
+		
+		<div class="mt-5">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>계좌번호</th>
+						<th>상품 번호</th>
+						<th>계좌 개설일</th>
+						<th>잔액</th>
+					</tr>
+				</thead>
+				
+				
+				<tbody class="table-group-divider">
+					<c:forEach items="${member.dtos}" var="ac">	
+						<tr>
+							<td><a href="/account/detail?bank_id=${ac.bank_id}"> ${ac.bank_id}</a></td>
+							<td>${ac.item_id}</td>
+							<td>${ac.open_date}</td>
+							<td>${ac.balance}</td>
+						</tr>
+					</c:forEach>	
+				</tbody>
+			</table>
 			
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<button type = "submit" class="btn btn-primary"
+					onclick="location.href ='/account/add?member_id=${account.member_id}' ">
+					계좌 개설
+				</button>
+				
+			</div>
 		</div>
 		
 	</div>
 
-	<div class="container col-md-6 ms-2 mt-3">
+	<div class="container col-md-6 mt-3 justify-content-center">
 		
-		<table class="table">
-			<thead>
-				<tr>
-					<th>계좌번호</th>
-					<th>상품 번호</th>
-					<th>계좌 개설일</th>
-					<th>잔액</th>
-				</tr>
-			</thead>
-			
-			
-			<tbody class="table-group-divider">
-				<c:forEach items="${member.dtos}" var="ac">	
-					<tr>
-						<td><a href="/account/detail?bank_id=${ac.bank_id}"> ${ac.bank_id}</a></td>
-						<td>${ac.item_id}</td>
-						<td>${ac.open_date}</td>
-						<td>${ac.balance}</td>
-					</tr>
-				</c:forEach>	
-			</tbody>
-		</table>
 		
-		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-			<button type = "submit" class="btn btn-primary"
-				onclick="location.href ='/account/add?member_id=${account.member_id}' ">
-				계좌 개설
-			</button>
-			
-		</div>
 		
 	</div>
 

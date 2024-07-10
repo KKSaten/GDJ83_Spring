@@ -2,7 +2,7 @@ package com.lsw.app.account;
 
 import java.sql.Date;
 
-public class BankingDTO {
+public class TradeDTO {
 	
 	private String bank_id;
 	private Date timepoint;

@@ -1,5 +1,7 @@
 package com.lsw.app.account;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,38 +52,44 @@ public class AccountController {
 	
 	
 	@RequestMapping(value="detail", method = RequestMethod.GET)
-	public void detail(AccountDTO accountDTO, Model model) throws Exception {
+	public void detail(HttpSession session, AccountDTO accountDTO, Model model) throws Exception {
 		accountDTO = accountService.detail(accountDTO);
 		model.addAttribute("dto", accountDTO);
 		
+		List<TradeDTO> banking_ar = accountService.bankingList(accountDTO);
+		model.addAttribute("list", banking_ar);
 	}
 	
 	
 	@RequestMapping(value="transfer", method=RequestMethod.GET)
 	public void transfer(AccountDTO accountDTO, Model model) throws Exception {	
 		model.addAttribute("account", accountDTO);
+
 	}
 	@RequestMapping(value="transfer", method=RequestMethod.POST)
-	public String transfer(AccountDTO accountDTO, BankingDTO bankingDTO, Model model)
+	public String transfer(HttpSession session, AccountDTO accountDTO, TradeDTO tradeDTO, Model model)
 			throws Exception {	
 		
-		model.addAttribute("banking", bankingDTO);
+		model.addAttribute("banking", tradeDTO);
 		
-		int result = accountService.transfer(accountDTO, bankingDTO);
-		
+		int result = accountService.transfer(accountDTO, tradeDTO);
 		
 		String url = "";
 		if(result == 4) {
 			url = "commons/message";
 			model.addAttribute("result", "정상 이체 처리");
 			model.addAttribute("url", "/member/mypage");
-		} if(result == -1) {
+		} else if(result == -1) {
 			url = "commons/message";
 			model.addAttribute("result", "비밀번호가 잘못입력되었습니다");
 			model.addAttribute("url", "/member/mypage");
-		} if(result == -2) {
+		} else if(result == -2) {
 			url = "commons/message";
 			model.addAttribute("result", "잔액이 부족합니다");
+			model.addAttribute("url", "/member/mypage");
+		} else {
+			url = "commons/message";
+			model.addAttribute("result", "Error");
 			model.addAttribute("url", "/member/mypage");
 		}
 		

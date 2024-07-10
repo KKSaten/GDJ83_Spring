@@ -1,6 +1,7 @@
 package com.lsw.app.account;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,19 +27,24 @@ public class AccountService {
 	}
 	
 	
-	public int transfer(AccountDTO accountDTO, BankingDTO bankingDTO) throws Exception {
+	public int transfer(AccountDTO accountDTO, TradeDTO tradeDTO) throws Exception {
 		
 		int result = -1;
-		
-		if ( accountDTO.getBank_pw().equals(accountDAO.detail(accountDTO).getBank_pw()) ) {			
-			result = accountDAO.transfer(bankingDTO) + accountDAO.transferList(bankingDTO);
-		}
-		
-		if ( bankingDTO.getDifference() > accountDAO.detail(accountDTO).getBalance() ) {			
+
+		if ( tradeDTO.getDifference() > accountDAO.detail(accountDTO).getBalance() ) {			
 			result = -2;
 		}
 		
+		if ( accountDTO.getBank_pw().equals(accountDAO.getPW(accountDTO)) ) {			
+			result = accountDAO.transfer(tradeDTO) + accountDAO.transferList(tradeDTO);
+		}
+		
 		return result;
+	}
+	
+	public List<TradeDTO> bankingList(AccountDTO accountDTO) throws Exception {
+		
+		return accountDAO.bankingList(accountDTO);
 	}
 
 }
