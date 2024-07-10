@@ -64,7 +64,25 @@
 		SELECT TIMEPOINT, ACCOUNT_U, DIFFERENCE, BAL_RESULT
 		FROM BANK_INFOS
 		WHERE BANK_ID = #{bank_id}
-		ORDER BY TIMEPOINT DESC
+			<choose>
+				<when test="io==0">
+					AND
+					DIFFERENCE>0
+				</when>
+  				<when test="io==1">
+	  				AND
+	  				0>DIFFERENCE
+  				</when>
+  			</choose>
+		ORDER BY TIMEPOINT
+		<choose>
+			<when test="order == 1">
+				ASC
+			</when>
+			<otherwise>
+				DESC
+			</otherwise>
+		</choose>
 	</select>
 	
 	<select id="getPW" parameterType="AccountDTO" resultType="java.lang.String">

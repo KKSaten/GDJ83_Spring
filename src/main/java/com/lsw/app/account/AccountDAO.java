@@ -45,9 +45,9 @@ public class AccountDAO {
 		return result;
 	}
 	
-	public List<TradeDTO> bankingList(AccountDTO accountDTO) {
+	public List<TradeDTO> bankingList(ListOption listOption) {
 		
-		return sqlSession.selectList(NAMESPACE+"bankingList", accountDTO);
+		return sqlSession.selectList(NAMESPACE+"bankingList", listOption);
 	}
 	
 	public String getPW(AccountDTO accountDTO) {

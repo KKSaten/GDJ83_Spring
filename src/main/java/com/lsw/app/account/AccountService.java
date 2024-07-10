@@ -42,9 +42,9 @@ public class AccountService {
 		return result;
 	}
 	
-	public List<TradeDTO> bankingList(AccountDTO accountDTO) throws Exception {
+	public List<TradeDTO> bankingList(ListOption listOption) throws Exception {
 		
-		return accountDAO.bankingList(accountDTO);
+		return accountDAO.bankingList(listOption);
 	}
 
 }

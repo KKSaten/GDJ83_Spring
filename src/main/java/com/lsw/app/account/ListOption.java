@@ -5,6 +5,16 @@ public class ListOption {
 	private String bank_id;
 	
 	private Integer order;// 0 desc, 1 asc
+	
+	private Integer io; // 1 출금 0 입금
+
+	public Integer getIo() {
+		return io;
+	}
+
+	public void setIo(Integer io) {
+		this.io = io;
+	}
 
 	public String getBank_id() {
 		return bank_id;

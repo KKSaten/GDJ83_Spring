@@ -55,9 +55,6 @@ public class AccountController {
 	public void detail(HttpSession session, AccountDTO accountDTO, Model model) throws Exception {
 		accountDTO = accountService.detail(accountDTO);
 		model.addAttribute("dto", accountDTO);
-		
-		List<TradeDTO> banking_ar = accountService.bankingList(accountDTO);
-		model.addAttribute("list", banking_ar);
 	}
 	
 	
@@ -95,5 +92,12 @@ public class AccountController {
 		return url;
 	}
 	
+	
+	@RequestMapping(value="list", method = RequestMethod.GET)
+	public void detail(ListOption listOption, Model model) throws Exception {
+
+		List<TradeDTO> banking_ar = accountService.bankingList(listOption);
+		model.addAttribute("list", banking_ar);
+	}
 	
 }
