@@ -3,27 +3,48 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.lsw.app.product.ProductDAO">
-	
-	<select id="getList" resultType="ProductDTO"> <!-- mybatis-config에서 com.lsw.app.product.ProductDTO의 별칭을 ProductDTO 설정했음 -->
-		SELECT * FROM ITEMS ORDER BY ITEM_ID ASC
+
+	<select id="getList" parameterType="PageOption" resultType="ProductDTO"> <!-- mybatis-config에서 com.lsw.app.product.ProductDTO의 별칭을 ProductDTO 설정했음 -->
+		SELECT * FROM
+			(SELECT ROWNUM R, B.* FROM
+				(SELECT * FROM ITEMS
+				ORDER BY ITEM_ID DESC)
+			B)			<!-- 부등호의 경우 컴퓨터가 꺾쇠로 읽고 태그로 인식하게 된다. 이를 위해 <![CDATA]]>를 사용 -->
+		<![CDATA[
+		WHERE R>=#{startRow} AND R<=#{lastRow}
+		]]>
 	</select>
-	
-	<select id="getDetail" resultType="ProductDTO" parameterType="ProductDTO">
+
+	<select id="getDetail" resultType="ProductDTO"
+		parameterType="ProductDTO">
 		SELECT * FROM ITEMS WHERE ITEM_ID = #{item_id}
 	</select>
-	
+
 	<insert id="add" parameterType="ProductDTO">
-		INSERT INTO ITEMS VALUES(ITEM_ID_SEQ.NEXTVAL, #{item_name}, #{item_detail}, #{item_rate})
+		INSERT INTO ITEMS
+		VALUES(ITEM_ID_SEQ.NEXTVAL, #{item_name}, #{item_detail},
+		#{item_rate})
 	</insert>
-	
+
 	<delete id="delete" parameterType="ProductDTO">
-		DELETE ITEMS WHERE ITEM_ID= #{item_id}
+		DELETE ITEMS WHERE ITEM_ID=
+		#{item_id}
 	</delete>
-	
+
 	<update id="update" parameterType="ProductDTO">
-		UPDATE ITEMS SET ITEM_ID=#{item_id}, ITEM_NAME=#{item_name}, ITEM_DETAIL=#{item_detail}, ITEM_RATE=#{item_rate} WHERE ITEM_ID=#{item_id}
+		UPDATE ITEMS SET
+		ITEM_ID=#{item_id}, ITEM_NAME=#{item_name},
+		ITEM_DETAIL=#{item_detail}, ITEM_RATE=#{item_rate} WHERE
+		ITEM_ID=#{item_id}
 	</update>
 	
- </mapper>
+	<select id="totalCount" resultType="java.lang.Long">
+		SELECT COUNT(ROWNUM) FROM ITEMS
+	</select>
+	
+	
+	
+	
+</mapper>

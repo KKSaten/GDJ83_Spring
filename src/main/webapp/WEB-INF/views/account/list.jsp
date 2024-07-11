@@ -35,8 +35,6 @@
 					onclick="location.href ='list?bank_id=${param.bank_id}&order=1' ">오래된순</button>
 			</div>
 
-
-
 		</div>
 
 
@@ -70,27 +68,6 @@
 
 		</table>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>

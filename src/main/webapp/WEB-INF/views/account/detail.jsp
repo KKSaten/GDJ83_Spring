@@ -41,15 +41,13 @@
 					onclick="location.href ='/account/transfer?bank_id=${dto.bank_id}' ">
 					계좌 이체
 				</button>
-			</div>
-			
-			
-			<div class="d-grid gap-2 d-md-flex mt-5 justify-content-md-end">
-				<button type = "submit" class="btn btn-primary"
+				
+				<button type = "submit" class="btn btn-outline-primary"
 					onclick="location.href ='/account/list?bank_id=${dto.bank_id}&order=0' ">
 					이체 내역
 				</button>
 			</div>
+
 			
 			
 			
