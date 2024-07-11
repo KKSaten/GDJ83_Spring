@@ -5,15 +5,6 @@ public class PageOption {
 	private Long startRow;
 	private Long lastRow;
 	
-	private Long totalPage;
-	
-	
-	public Long getTotalPage() {
-		return totalPage;
-	}
-	public void setTotalPage(Long totalPage) {
-		this.totalPage = totalPage;
-	}
 	public Long getStartRow() {
 		return startRow;
 	}

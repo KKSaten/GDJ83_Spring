@@ -22,7 +22,7 @@
 			</thead>
 
 			<tbody class="table-group-divider">
-				<c:forEach items="${list}" var="dto">
+				<c:forEach items="${map.list}" var="dto">
 					<tr>
 						<td>${dto.item_id}</td>
 						<td><a href="./detail?item_id=${dto.item_id}">${dto.item_name}</a></td>
@@ -35,24 +35,29 @@
 		<div>
 			<a href="./add" class="btn btn-primary">상품 추가</a>
 		</div>
-	
-		<div class="col mt-5 justify-content-center">	
+
+		<div class="container col-md-5 mt-5 justify-content-center">
 			<nav aria-label="Page navigation example">
 				<ul class="pagination">
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-					</a></li>
-					<li class="page-item"><a class="page-link" href="./list?page=1">1</a></li>
-					<li class="page-item"><a class="page-link" href="./list?page=2">2</a></li>
-					<li class="page-item"><a class="page-link" href="./list?page=3">3</a></li>
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-					</a></li>
+					<li class="page-item ${map.pre?'':'disabled'}">
+						<a class="page-link" href="./list?page=${map.startNum - 1}" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>							</a>
+					</li>
+					<c:forEach begin="${map.startNum}" end="${map.lastNum}" step="1" var="i">
+						<li class="page-item"><a class="page-link"
+							href="./list?page=${i}">${i}</a></li>
+					</c:forEach>
+	
+					<li class="page-item ${map.next?'':'disabled'}">
+						<a class="page-link" href="./list?page=${map.lastNum + 1}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
-
 	</div>
+	
 
 
 
