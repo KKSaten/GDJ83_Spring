@@ -14,8 +14,8 @@
           <a class="nav-link active" aria-current="page" href="/product/list">금융상품</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">미정</a>
-		</li>
+          <a class="nav-link active" aria-current="page" href="/notice/list">공지사항(수정중)</a>
+        </li>
 		
 		<c:choose>
 			<c:when test="${not empty member}">

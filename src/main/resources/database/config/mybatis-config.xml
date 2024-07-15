@@ -17,6 +17,8 @@
 		<typeAlias type="com.lsw.app.account.TradeDTO" alias="TradeDTO"/>
 		<typeAlias type="com.lsw.app.account.ListOption" alias="ListOption"/>
 		
+		<typeAlias type="com.lsw.app.notice.NoticeDTO" alias="NoticeDTO"/>
+		
 		<typeAlias type="java.util.Map" alias="Map"/>
 		
 	</typeAliases>
