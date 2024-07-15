@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.lsw.app.util.PageOption;
+import com.lsw.app.util.Pager;
 
 @Repository
 public class ProductDAO {
@@ -21,13 +21,13 @@ public class ProductDAO {
 	private final String NAMESPACE="com.lsw.app.product.ProductDAO.";
 	
 	
-	public List<ProductDTO> getList(PageOption pageOption) throws Exception {	
-		return sqlSession.selectList(NAMESPACE+"getList", pageOption);
+	public List<ProductDTO> getList(Pager pager) throws Exception {	
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
 	
-	public Long totalCount() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"totalCount");
+	public Long getTotalCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
 	

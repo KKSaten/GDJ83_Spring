@@ -17,23 +17,22 @@
 				
 		
 			<div class="mb-3">
-					<label for="board_writer" class="form-label">  작성자</label> 
-					<input type="text" class="form-control" id="board_writer"
-					name="board_writer" value="${member.member_id}" readonly="readonly">
+					<label for="boardWriter" class="form-label">  작성자</label> 
+					<input type="text" class="form-control" id="boardWriter"
+					name="boardWriter" value="${member.member_id}" readonly="readonly">
 				</div>
 			
 				<div class="mb-3">
-					<label for="board_title" class="form-label">게시글제목</label> 
-					<input type="text" class="form-control" id="board_title" name="board_title">
+					<label for="boardTitle" class="form-label">게시글제목</label> 
+					<input type="text" class="form-control" id="boardTitle" name="boardTitle">
 				</div>
 				<div class="mb-3">
-					<label for="board_contents" class="form-label">게시글내용</label> 
-					<textarea class="form-control" id="board_contents" name="board_contents">
-					</textarea>
+					<label for="boardContents" class="form-label">게시글내용</label> 
+					<textarea class="form-control" id="boardContents" name="boardContents"></textarea>
 				</div>
-				<div class="mb-3">
-					<input type="hidden" class="form-control" id="board_category" name="board_category">
-				</div>
+<!-- 				<div class="mb-3">
+					<input type="hidden" class="form-control" id="boardCategory" name="boardCategory">
+				</div> -->
 						
 						
 				<div class="d-grid gap-2 d-md-flex justify-content-end">

@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.lsw.app.DefaultTest;
-import com.lsw.app.util.PageOption;
+import com.lsw.app.util.Pager;
 
 public class ProductDAOTest extends DefaultTest {
 

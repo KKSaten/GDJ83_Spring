@@ -6,19 +6,31 @@
 
 <mapper namespace="com.lsw.app.product.ProductDAO">
 
-	<select id="getList" parameterType="PageOption" resultType="ProductDTO"> <!-- mybatis-config에서 com.lsw.app.product.ProductDTO의 별칭을 ProductDTO 설정했음 -->
-		SELECT * FROM
+	<select id="getList" parameterType="Pager" resultType="ProductDTO"> <!-- mybatis-config에서 com.lsw.app.product.ProductDTO의 별칭을 ProductDTO 설정했음 -->
+  		SELECT * FROM
 			(SELECT ROWNUM R, B.* FROM
-				(SELECT * FROM ITEMS
-				ORDER BY ITEM_ID DESC)
-			B)			<!-- 부등호의 경우 컴퓨터가 꺾쇠로 읽고 태그로 인식하게 된다. 이를 위해 <![CDATA]]>를 사용 -->
-		<![CDATA[
-		WHERE R>=#{startRow} AND R<=#{lastRow}
-		]]>
+					(SELECT * FROM ITEMS
+						<where>
+							ITEM_ID > 0
+							
+							<choose>
+								<when test="kind=='k2'">
+									AND ITEM_DETAIL LIKE '%'||#{search}||'%'
+								</when>
+								<otherwise>
+									AND ITEM_NAME LIKE '%'||#{search}||'%'
+								</otherwise>
+							</choose>
+							
+						</where>
+						ORDER BY ITEM_ID DESC
+					)B
+			)
+		WHERE R BETWEEN #{startRow} AND #{lastRow} 
+  		<![CDATA[ ]]>
 	</select>
 
-	<select id="getDetail" resultType="ProductDTO"
-		parameterType="ProductDTO">
+	<select id="getDetail" resultType="ProductDTO" parameterType="ProductDTO">
 		SELECT * FROM ITEMS WHERE ITEM_ID = #{item_id}
 	</select>
 
@@ -40,8 +52,20 @@
 		ITEM_ID=#{item_id}
 	</update>
 	
-	<select id="totalCount" resultType="java.lang.Long">
+	<select id="getTotalCount" parameterType="Pager" resultType="java.lang.Long">
 		SELECT COUNT(ROWNUM) FROM ITEMS
+			<where>
+				ROWNUM > 0
+							
+				<choose>
+					<when test="kind=='k2'">
+						AND ITEM_DETAIL LIKE '%'||#{search}||'%'
+					</when>
+					<otherwise>
+						AND ITEM_NAME LIKE '%'||#{search}||'%'
+					</otherwise>
+				</choose>	
+			</where>
 	</select>
 	
 	

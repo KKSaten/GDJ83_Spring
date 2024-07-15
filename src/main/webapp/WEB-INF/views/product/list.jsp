@@ -12,7 +12,31 @@
 	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
 
 	<div class="container col-md-5 mt-4 justify-content-center">
-		<table class="table">
+
+		<form action="/notice/list" method="get"
+			class="row row-cols-lg-auto g-3 align-items-center justify-content-end">
+			<div class="col-12">
+				<label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+				<select name="kind" class="form-select" id="inlineFormSelectPref">
+					<option value="k1">게시글제목</option>
+					<option value="k2">게시글내용</option>
+					<option value="k3">작성자</option>
+				</select>
+			</div>
+			<div class="col-12">
+				<label class="visually-hidden" for="inlineFormInputGroupUsername"></label>
+				<div class="input-group">
+					<input type="text" name="search" class="form-control"
+						id="inlineFormInputGroupUsername" placeholder="검색어 입력">
+				</div>
+			</div>
+			<div class="col-12">
+				<button type="submit" class="btn btn-primary">Search</button>
+			</div>
+		</form>
+
+
+		<table class="table mt-5">
 			<thead>
 				<tr>
 					<th>상품 번호</th>
@@ -22,7 +46,7 @@
 			</thead>
 
 			<tbody class="table-group-divider">
-				<c:forEach items="${map.list}" var="dto">
+				<c:forEach items="${list}" var="dto">
 					<tr>
 						<td>${dto.item_id}</td>
 						<td><a href="./detail?item_id=${dto.item_id}">${dto.item_name}</a></td>
@@ -39,25 +63,26 @@
 		<div class="container col-md-5 mt-5 justify-content-center">
 			<nav aria-label="Page navigation example">
 				<ul class="pagination">
-					<li class="page-item ${map.pre?'':'disabled'}">
-						<a class="page-link" href="./list?page=${map.startNum - 1}" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>							</a>
-					</li>
-					<c:forEach begin="${map.startNum}" end="${map.lastNum}" step="1" var="i">
+					<li class="page-item ${pager.pre?'':'disabled'}"><a
+						class="page-link"
+						href="./list?page=${pager.startNum - 1}&kind=${pager.kind}&search=${pager.search}"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+					</a></li>
+					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" step="1"
+						var="i">
 						<li class="page-item"><a class="page-link"
-							href="./list?page=${i}">${i}</a></li>
+							href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 					</c:forEach>
-	
-					<li class="page-item ${map.next?'':'disabled'}">
-						<a class="page-link" href="./list?page=${map.lastNum + 1}" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
+
+					<li class="page-item ${pager.next?'':'disabled'}"><a
+						class="page-link" href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}"
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
 				</ul>
 			</nav>
 		</div>
 	</div>
-	
+
 
 
 

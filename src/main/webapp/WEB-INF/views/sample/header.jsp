@@ -14,7 +14,10 @@
           <a class="nav-link active" aria-current="page" href="/product/list">금융상품</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/notice/list">공지사항(수정중)</a>
+          <a class="nav-link active" aria-current="page" href="/notice/list">공지사항</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/qna/list">QnA</a>
         </li>
 		
 		<c:choose>

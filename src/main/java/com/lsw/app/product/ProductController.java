@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.lsw.app.util.Pager;
+
 @Controller
 @RequestMapping("/product/*")
 public class ProductController {
@@ -17,14 +19,16 @@ public class ProductController {
 	private ProductService productService;
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public void getList(Long page, Model model) throws Exception {
-		Map<String, Object> map = productService.getList(page);
+	public void getList(Pager pager, Model model) throws Exception {
+		List<ProductDTO> list = productService.getList(pager);
 		
-		model.addAttribute("map", map);
+		model.addAttribute("pager", pager);
+		model.addAttribute("list", list);
+		
 	}
 	
 	
-	@RequestMapping(value = "detail")
+	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public String getDetail(Model model, ProductDTO productDTO) throws Exception{
 		productDTO = productService.getDetail(productDTO);
 		
