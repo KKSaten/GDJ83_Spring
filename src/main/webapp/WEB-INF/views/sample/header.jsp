@@ -17,7 +17,7 @@
           <a class="nav-link active" aria-current="page" href="/notice/list">공지사항</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/qna/list">QnA</a>
+          <a class="nav-link active" aria-current="page" href="/qna/list">QnA(제작중)</a>
         </li>
 		
 		<c:choose>

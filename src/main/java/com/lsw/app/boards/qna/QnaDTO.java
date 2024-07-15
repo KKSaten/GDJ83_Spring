@@ -39,17 +39,6 @@ public class QnaDTO extends BoardDTO {
 //	6			   ㄴ1-1-1-1				1			5			3
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public Long getRef() {
 		return ref;
 	}
