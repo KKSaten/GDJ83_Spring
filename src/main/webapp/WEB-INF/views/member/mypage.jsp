@@ -38,7 +38,7 @@
 				회원정보 수정
 			</button>
 			
-			<form action="./delete?member_id=${member.member_id}" method="post">
+			<form action="./delete" method="post">
 				<button type="submit" class="btn btn-danger">회원 탈퇴</button>
 			</form>		
 		</div>

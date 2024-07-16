@@ -4,8 +4,12 @@ import com.lsw.app.boards.BoardDTO;
 
 public class QnaDTO extends BoardDTO {
 	
+	private Integer del;
+	
+	
 	//본래는 글번호 desc순으로 정렬을 했다 하지만 답글이 있다면 지금까지처럼 정렬시킬 수 없다
 	
+
 	private Long ref;	//글들을 그룹으로 묶는 용도 (원본글과 그 밑의 답글들을 묶을 것임)
 						//원본글 : 자기 자신의 글 번호가 REF값으로 입력
 						//답글 : 부모글의 REF값이 자기의 REF값으로 입력
@@ -56,6 +60,12 @@ public class QnaDTO extends BoardDTO {
 	}
 	public void setDepth(Long depth) {
 		this.depth = depth;
+	}
+	public Integer getDel() {
+		return del;
+	}
+	public void setDel(Integer del) {
+		this.del = del;
 	}
 
 }

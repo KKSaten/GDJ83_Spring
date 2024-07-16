@@ -3,7 +3,7 @@ package com.lsw.app.boards;
 import java.sql.Date;
 
 public class BoardDTO {
-	private int boardNum;
+	private Long boardNum;
 	private String boardWriter;
 	private String boardTitle;
 	private String boardContents;
@@ -11,10 +11,22 @@ public class BoardDTO {
 	private Date updateDate;
 	private String boardCategory;
 	private Integer boardHit;
-	public int getBoardNum() {
+	private Integer del;
+	
+	public Integer getDel() {
+		if(this.del == null) {
+			this.del = 0;
+		}
+		return del;
+	}
+	public void setDel(Integer del) {
+		this.del = del;
+	}
+	
+	public Long getBoardNum() {
 		return boardNum;
 	}
-	public void setBoardNum(int boardNum) {
+	public void setBoardNum(Long boardNum) {
 		this.boardNum = boardNum;
 	}
 	public String getBoardWriter() {

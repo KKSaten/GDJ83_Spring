@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,12 +21,19 @@ public class NoticeController {
 	
 	@Autowired
 	private NoticeService noticeService;
+	
+	
+	@ModelAttribute("board") //Model의 키값
+	public String getBoard() {
+			
+		return "Notice" ; //Model의 밸류값이 됨
+	}
+	
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String getList(Pager pager, Model model) throws Exception {
 		List<BoardDTO> list = noticeService.list(pager);
 		
-		model.addAttribute("pager", pager);
 		model.addAttribute("list", list);
 		
 		return "/board/list";
@@ -65,31 +73,31 @@ public class NoticeController {
 		if (result > 0) {
 			url = "commons/message";
 			model.addAttribute("result", "게시글을 삭제하였습니다.");
-			model.addAttribute("url", "board/list");
+			model.addAttribute("url", "./list");
 		} else {
 			model.addAttribute("result", "삭제에 실패했습니다.");
-			model.addAttribute("url", "board/list");
+			model.addAttribute("url", "./list");
 			url = "commons/message";
 		}
 		return url;
 
 	}
 
-	@RequestMapping(value = "write", method = RequestMethod.GET)
+	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String add(){
-		return "board/wrtie";
+		return "board/add";
 	}
-	@RequestMapping(value = "write", method = RequestMethod.POST)
+	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String add(NoticeDTO noticeDTO, Model model) throws Exception {
 		int result = noticeService.add(noticeDTO);
 
 		String url = "";
 		if (result > 0) {
-			url = "redirect:board/list";
+			url = "redirect:./list";
 		} else {
 			url = "commons/message";
 			model.addAttribute("result", "글쓰기에 실패했습니다.");
-			model.addAttribute("url", "board/list");
+			model.addAttribute("url", "./list");
 		}
 		return url;
 	}
@@ -101,7 +109,7 @@ public class NoticeController {
 		String url = "";
 		if (boardDTO != null) {
 			model.addAttribute("dto", boardDTO);
-			url = "board/update";
+			url = "./update";
 		} else {
 			model.addAttribute("result", "없는 게시글입니다.");
 			model.addAttribute("url", "./list");

@@ -60,7 +60,7 @@
 			<a href="./add" class="btn btn-primary">상품 추가</a>
 		</div>
 
-		<div class="container col-md-5 mt-5 justify-content-center">
+		<div class="container col-md-4 mt-5 justify-content-center">
 			<nav aria-label="Page navigation example">
 				<ul class="pagination">
 					<li class="page-item ${pager.pre?'':'disabled'}"><a
@@ -81,6 +81,7 @@
 				</ul>
 			</nav>
 		</div>
+		
 	</div>
 
 

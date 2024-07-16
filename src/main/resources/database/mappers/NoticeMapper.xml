@@ -39,7 +39,7 @@
 
 
 	<delete id="delete" parameterType="NoticeDTO">
-		DELETE FROM NOTICE
+		DELETE NOTICE
 		WHERE
 		BOARDNUM = #{boardNum}
 

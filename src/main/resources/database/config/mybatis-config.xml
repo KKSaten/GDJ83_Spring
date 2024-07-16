@@ -19,7 +19,7 @@
 		
 		<typeAlias type="com.lsw.app.boards.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.lsw.app.boards.notice.NoticeDTO" alias="NoticeDTO"/>
-		<!-- <typeAlias type="com.lsw.app.boards.qna.QnaDTO" alias="QnaDTO"/> -->
+		<typeAlias type="com.lsw.app.boards.qna.QnaDTO" alias="QnaDTO"/>
 		
 		<typeAlias type="java.util.Map" alias="Map"/>
 		
