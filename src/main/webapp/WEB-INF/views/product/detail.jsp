@@ -5,41 +5,86 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<c:import url="/WEB-INF/views/sample/bootHeader.jsp"></c:import>
+<title>연습용 웹페이지</title>
+<c:import url="../template/header_css.jsp"></c:import>
 </head>
-<body>
-	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
-	
-	<div class="container col-md-5 mt-4 justify-content-center">
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col">${dto.item_name} 상세 정보</th>
-				</tr>
-			</thead>
-			<tbody class= "table-group-divider">
-				<tr>
-					<th scope="row">상품 번호</th>
-					<td>${dto.item_id}</td>
-				</tr>
-				<tr>
-					<th scope="row">상품 설명</th>
-					<td>${dto.item_detail}</td>
-				</tr>
-				<tr>
-					<th scope="row">이자율</th>
-					<td>${dto.item_rate}</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-			<button type = "submit" class="btn btn-primary" onclick="location.href ='/account/add?item_id=${dto.item_id}' ">계좌 개설</button>
+<body id="page-top">
+
+	<c:import url="../template/nav.jsp"></c:import>
+	<header class="masthead bg-primary text-white text-center">
+		<div class="container d-flex align-items-center flex-column">
+			<!-- Masthead Avatar Image-->
+			<img class="masthead-avatar mb-5"
+				src="/resources/assets/img/avataaars.svg" alt="..." />
+			<!-- Masthead Heading-->
+			<h1 class="masthead-heading text-uppercase mb-0">
+				-${dto.item_name}-
+</h1>
+			<!-- Icon Divider-->
+			<div class="divider-custom divider-light">
+				<div class="divider-custom-line"></div>
+				<div class="divider-custom-icon">
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="divider-custom-line"></div>
+			</div>
+			<!-- Masthead Subheading-->
+			<p class="masthead-subheading font-weight-light mb-0">Graphic
+				Artist - Web Designer - Illustrator</p>
 		</div>
-		
-		
+	</header>
+
+	<!-- About Section-->
+
+	<section class="page-section portfolio" id="portfolio">
+
+		<div class="container">
+			<!-- Portfolio Section Heading-->
+
+			<!-- Icon Divider-->
+			<div class="divider-custom">
+				<div class="divider-custom-line"></div>
+				<div class="divider-custom-icon">
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="divider-custom-line"></div>
+			</div>
+			<div class="container col-md-5 mt-4 justify-content-center">
+			
+			
+
+			<div class="page-section-heading text-center text-uppercase text-secondary mb-0" >
+			
+			<h3>${dto.item_name} </h3>
+			</div>
+			<div class="divider-custom">
+			
+				<table class="table table-hover"
+					style="text-align: center; margin-top: 30px; width: 70%;">
+					<thead
+						class="page-section-heading text-center text-uppercase text-secondary mb-0"
+						style="font-size: 1.5rem;">
+						<tr>
+							<th scope="col">상품 번호</th>
+							<th scope="col">상품 이름</th>
+							<th scope="col">이자율</th>
+						</tr>
+					</thead>
+					<tbody
+						class="page-section-heading text-center text-uppercase text-secondary mb-0"
+						style="font-size: 1rem;">
+						
+							<tbody>
+								<tr>
+									<td>${dto.item_id}</td>
+									<td>${dto.item_detail}</td>
+									<td>${dto.item_rate}</td>
+								</tr>
+							</tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
 		<div class="d-grid gap-2 d-md-flex">
 			<button type = "submit" class="btn btn-primary" onclick="location.href ='./update?item_id=${dto.item_id}' ">상품 수정</button>
 			<form action="./delete" method="post">
@@ -47,14 +92,9 @@
 				<button type="submit" class="btn btn-danger">상품 삭제</button>
 			</form>
 		</div>
-		
-		
-
-		
-		
 	</div>
-	
-	
-	<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
+	</section>
+
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
