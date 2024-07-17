@@ -22,8 +22,6 @@ import com.lsw.app.util.Pager;
 @RequestMapping("/qna/*")
 public class QnaController {
 	
-	private int master;
-	
 	@Autowired
 	private QnaService qnaService;
 	
