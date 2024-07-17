@@ -31,6 +31,8 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest request) {
 		
+		System.out.println("Study_Conflict");
+		
 //		//1
 //		Calendar ca = Calendar.getInstance();
 //		
