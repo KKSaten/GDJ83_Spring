@@ -26,7 +26,7 @@
                 <!-- Masthead Subheading-->
                 <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
             </div>
-        </header> <!-- !!!!!!!!!! -->
+        </header>
 
 
 	   <!-- Contact Section Form-->
