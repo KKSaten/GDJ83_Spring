@@ -62,7 +62,12 @@
 				<label for="item_rate" class="form-label">이자율</label>
 				<input type="text" class="form-control" id="item_rate" name="item_rate">
 			</div>
-		
+            <button type="button" id="add" class="btn btn-primary" style="margin-bottom: 10px;">파일추가</button>
+            <div id="result">
+
+
+            </div>
+
 			<button type="submit" class="btn btn-primary">등록</button>
 		</form>
                     </div>
@@ -71,5 +76,10 @@
         </section>
                
 	<c:import url="../template/footer.jsp"></c:import>
+    <script type="text/javascript" src="../resources/js/commons/files.js"></script>
+    <script>
+        setMax(5);
+
+    </script>
 </body>
 </html>

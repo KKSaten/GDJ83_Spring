@@ -57,12 +57,20 @@
                                 <label for="member_id">ID</label>
                                 <div class="text-danger" id="id_error" > </div>
                             </div>
-                            <!-- Email address input-->
+                            
+                            <!-- password address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control ch" id="member_pw" type="password"  name= "member_pw" placeholder="Enter your pw..." data-sb-validations="required" />
+                                <input class="form-control ch" id="member_pw" type="password"  placeholder="Enter your pw..." data-sb-validations="required" />
                                 <label for="member_pw">Password</label>
-                                <div class="text-danger" id="password_error" > </div>
+                                <div class="text-danger" id="password_error"  style="font-weight: bold;"> </div>
                             </div>
+                               <!-- password address input-->
+                               <div class="form-floating mb-3">
+                                <input class="form-control ch" id="member_pw_ck" type="password"  name= "member_pw" placeholder="Enter your pw..." data-sb-validations="required" />
+                                <label for="member_pw">Password 확인</label>
+                                <div class="text-danger" id="password_eqError" style="font-weight: bold;" > </div>
+                            </div>
+
                             <div class="form-floating mb-3">
                                 <input class="form-control ch" id="member_name" type="text"  name= "member_name" data-sb-validations="required" placeholder="Enter your name..."/>
                                 <label for="member_name">Name</label>
