@@ -1,18 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<c:import url="/WEB-INF/views/sample/bootHeader.jsp"></c:import>
+<title>join</title>
+<c:import url="../template/header_css.jsp"></c:import>
 </head>
-<body>
-	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
+<body id="page-top">
 
-	<div class="container col-md-3 mt-4 justify-content-center">
-		<form action="./add" method="post">
+	<c:import url="../template/nav.jsp"></c:import>
+ <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="/resources/assets/img/avataaars.svg" alt="..." />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">add</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+            </div>
+        </header>
+
+
+	   <!-- Contact Section Form-->
+	    <section class="page-section" id="contact">
+            <div class="container">
+                <!-- Contact Section Heading-->
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Contact Section Form-->
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-xl-7">
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                       <form action="./add" method="post">
 			<div class="mb-2">
 				<label for="item_name" class="form-label">상품 이름</label>
 				<input type="text" class="form-control" id="item_name" name="item_name">
@@ -28,8 +65,11 @@
 		
 			<button type="submit" class="btn btn-primary">등록</button>
 		</form>
-	</div>
-
-	<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
+                    </div>
+                </div>
+            </div>
+        </section>
+               
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

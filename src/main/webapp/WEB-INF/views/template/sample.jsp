@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>연습용 웹페이지</title>
 <c:import url="./template/header_css.jsp"></c:import>
 </head>
 <body id="page-top">

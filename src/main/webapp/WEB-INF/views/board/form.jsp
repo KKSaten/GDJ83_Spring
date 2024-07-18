@@ -5,42 +5,62 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>add</title>
-<c:import url="/WEB-INF/views/sample/bootHeader.jsp"></c:import>
+<title>login</title>
+<c:import url="../template/header_css.jsp"></c:import>
 </head>
-<body>
-	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
-	<div class="container justify-content-center mt-5" style="width: 50%">
-		<div class="row">
-			<h1>${board}</h1>
+<body id="page-top">
 
-			<form method="post"> <!-- action은 생략이 가능한데 생략시 현재주소가 url로 들어감 -->
+	<c:import url="../template/nav.jsp"></c:import>
+	<header class="masthead bg-primary text-white text-center">
+		<div class="container d-flex align-items-center flex-column">
+			<!-- Masthead Avatar Image-->
+			<img class="masthead-avatar mb-5"
+				src="/resources/assets/img/avataaars.svg" alt="..." />
+			<!-- Masthead Heading-->
+			<h1 class="masthead-heading text-uppercase mb-0">reply</h1>
+			<!-- Icon Divider-->
+			<div class="divider-custom divider-light">
+				<div class="divider-custom-line"></div>
+				<div class="divider-custom-icon">
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="divider-custom-line"></div>
+			</div>
+			<!-- Masthead Subheading-->
+			<p class="masthead-subheading font-weight-light mb-0">Graphic
+				Artist - Web Designer - Illustrator</p>
+		</div>
+	</header>
+	<div class="row justify-content-center">
+		<div class="col-lg-6 col-xl-6">
+			<form method="post">
+				<!-- action은 생략이 가능한데 생략시 현재주소가 url로 들어감 -->
 
 				<input type="hidden" value="${dto.boardNum}" name="boardNum">
-				
-				<div class="mb-3">
-					<label for="boardWriter" class="form-label">작성자</label>
-					<input type="text" class="form-control" id="boardWriter"
-					name="boardWriter" value="${member.member_id}" readonly="readonly">
+
+				<div class="form-floating mb-3">
+					<input class="form-control" id="boardWriter" name="boardWriter"	type="text" placeholder="Enter your boardWriter..."	data-sb-validations="required" /> 
+						<label for="boardWriter">작성자</label>
+					<div class="invalid-feedback"data-sb-feedback="boardWriter:required">A boardWriter is required.</div>
 				</div>
 
-				<div class="mb-3">
-					<label for="boardTitle" class="form-label">글제목</label>
-					<input type="text" class="form-control" id="boardTitle" name="boardTitle" value="${dto.boardTitle}">
-				</div>
-				<div class="mb-3">
-					<label for="boardContents" class="form-label">글내용</label>
-					<textarea class="form-control" id="boardContents" name="boardContents">${dto.boardContents}</textarea>
+				<div class="form-floating mb-3">
+					<input class="form-control" id="boardTitle" name="boardTitle" type="text" placeholder="Enter your boardTitle..."data-sb-validations="required" /> 
+						<label for="boardTitle">글제목</label>
+					<div class="invalid-feedback"data-sb-feedback="boardTitle:required">A boardTitle is	required.</div>
 				</div>
 
-
-				<div class="d-grid gap-2 d-md-flex justify-content-end">
-					<button type="submit" class="btn btn-secondary">등록</button>
+				<div class="form-floating mb-3">
+					<input class="form-control" id="boardContents" name="boardContents"	type="text" placeholder="Enter your boardContents..."data-sb-validations="required" /> 
+						<label for="boardContents">글내용</label>
+					<div class="invalid-feedback" data-sb-feedback="boardContents:required">A boardTitle is	required.</div>
 				</div>
 
+				<button type="submit" class="btn btn-primary btn-l" style="margin-left: 700px;margin-bottom: 20px; ">Send</button>
 			</form>
 		</div>
 	</div>
+
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
-<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
 </html>
