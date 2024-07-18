@@ -49,39 +49,45 @@
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
                         <!-- to get an API token!-->
-                        <form action="./join" method="post" data-sb-form-api-token="API_TOKEN">
+                        <form action="./join" method="post" data-sb-form-api-token="API_TOKEN" id="frm"> 
                             <!-- Name input-->
+                            
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="member_id" name= "member_id"type="text" placeholder="Enter your id..." data-sb-validations="required" />
+                                <input class="form-control ch" id="member_id" name= "member_id" type="text" placeholder="Enter your id..." data-sb-validations="required" />
                                 <label for="member_id">ID</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A ID is required.</div>
+                                <div class="text-danger" id="id_error" > </div>
                             </div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="member_pw" type="password"  name= "member_pw" placeholder="Enter your pw..." data-sb-validations="required" />
+                                <input class="form-control ch" id="member_pw" type="password"  name= "member_pw" placeholder="Enter your pw..." data-sb-validations="required" />
                                 <label for="member_pw">Password</label>
-                                <div class="invalid-feedback" data-sb-feedback="member_pw:required">An Password is required.</div>
+                                <div class="text-danger" id="password_error" > </div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="member_name" type="text"  name= "member_name" data-sb-validations="required" placeholder="Enter your name..."/>
+                                <input class="form-control ch" id="member_name" type="text"  name= "member_name" data-sb-validations="required" placeholder="Enter your name..."/>
                                 <label for="member_name">Name</label>
                                 <div class="invalid-feedback" data-sb-feedback="member_name:required">An Name is required.</div>
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="member_phone"  name ="member_phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                <input class="form-control ch" id="member_phone"  name ="member_phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
                                 <label for="member_phone">Phone number</label>
                                 <div class="invalid-feedback" data-sb-feedback="member_phone:required">A phone number is required.</div>
                             </div>
                             
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="member_email" type="email" name ="member_email"placeholder="name@example.com" data-sb-validations="required,email" />
+                                <input class="form-control ch" id="member_email" type="email" name ="member_email"placeholder="name@example.com" data-sb-validations="required,email" />
                                 <label for="member_email">Email address</label>
                                 <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                                 <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                         
-                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Send</button>
+                            </div>                        
+                                <button class="btn btn-primary btn-l" id="add" type="button" style="margin-bottom: 10px;">파일추가</button>
+                                <div id="result">
+
+
+                              
+                                 </div>
+                            <button class="btn btn-primary btn-l" id="joinBtn" type="button">join</button>
                         </form>
                     </div>
                 </div>
@@ -89,5 +95,7 @@
         </section>
                
 	<c:import url="../template/footer.jsp"></c:import>
+	<script type="text/javascript" src="../resources/js/member/memberJoinCheck.js"></script>
+    <script type="text/javascript" src="../resources/js/commons/files.js"></script>
 </body>
 </html>
