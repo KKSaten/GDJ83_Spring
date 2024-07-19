@@ -21,6 +21,10 @@
 		<typeAlias type="com.lsw.app.boards.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.lsw.app.boards.qna.QnaDTO" alias="QnaDTO"/>
 		
+		<typeAlias type="com.lsw.app.files.FileDTO" alias="FileDTO"/>
+		<typeAlias type="com.lsw.app.member.MemberFileDTO" alias="MemberFileDTO"/>
+		
+		
 		<typeAlias type="java.util.Map" alias="Map"/>
 		
 	</typeAliases>

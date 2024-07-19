@@ -2,6 +2,7 @@ package com.lsw.app.member;
 
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.lsw.app.account.*;
 
@@ -30,8 +32,17 @@ public class MemberController {
 	public void join() throws Exception {
 	}
 	@RequestMapping(value = "join", method = RequestMethod.POST)
-	public String join(Model model, MemberDTO memberDTO) throws Exception {
-		int result = memberService.join(memberDTO);
+	public String join(Model model, MemberDTO memberDTO, MultipartFile files, HttpSession session) throws Exception {
+		
+		System.out.println(session.getServletContext());
+		System.out.println(files.getName());
+		System.out.println(files.getOriginalFilename());
+		System.out.println(files.getSize());
+		
+		
+		
+		
+		int result = memberService.join(memberDTO, files, session);
 		
 		String url = "";
 		if(result > 0) {

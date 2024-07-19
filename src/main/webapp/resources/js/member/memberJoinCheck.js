@@ -26,7 +26,7 @@
     
    }else{
     alert("모든 항목 입력 완료!");
-        //frm.submit();
+        frm.submit();
    }
    if(member_id.value=="" ){
     id_error.innerHTML="id를 입력해주세요.";

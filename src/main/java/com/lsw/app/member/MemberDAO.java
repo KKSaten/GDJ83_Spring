@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.lsw.app.files.FileDTO;
+
 @Repository
 public class MemberDAO {
 	
@@ -34,6 +36,10 @@ public class MemberDAO {
 	
 	public MemberDTO getDetail(MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectOne(NAMESAPCE+"mypage", memberDTO);
+	}
+	
+	public int addFile(MemberFileDTO memberFileDTO) throws Exception {
+		return sqlSession.insert(NAMESAPCE+"addFile", memberFileDTO);
 	}
 
 }

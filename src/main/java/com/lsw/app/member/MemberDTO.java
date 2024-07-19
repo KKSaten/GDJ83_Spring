@@ -13,9 +13,16 @@ public class MemberDTO {
 	private String member_phone;
 	private String member_email;
 	private List<AccountDTO> dtos;
+	private MemberFileDTO memberFileDTO;
 
 	
 
+	public MemberFileDTO getMemberFileDTO() {
+		return memberFileDTO;
+	}
+	public void setMemberFileDTO(MemberFileDTO memberFileDTO) {
+		this.memberFileDTO = memberFileDTO;
+	}
 	public String getMember_id() {
 		return member_id;
 	}

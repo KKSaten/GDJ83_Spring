@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.lsw.app.DefaultTest;
+import com.lsw.app.files.FileDTO;
 
 public class MemberDAOTest extends DefaultTest {
 
@@ -16,13 +17,15 @@ public class MemberDAOTest extends DefaultTest {
 	private MemberDAO memberDAO;
 	
 	@Test
-	public void loginTest() throws Exception {
+	public void addFileTest() throws Exception {
 		
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setMember_id("IronMan");
-		memberDTO = memberDAO.login(memberDTO);
+		MemberFileDTO memberFileDTO = new MemberFileDTO();
+		memberFileDTO.setMember_id("IronHeart");
+		memberFileDTO.setFileName("IronMan");
+		memberFileDTO.setOriName("IronMan");
+		int result = memberDAO.addFile(memberFileDTO);
 		
-		assertNotNull(memberDTO);
+		System.out.println(result);
 		
 	}
 	
