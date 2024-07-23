@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lsw.app.boards.BoardDTO;
@@ -28,7 +29,7 @@ public class QnaController {
 	@ModelAttribute("board") //Model의 키값
 	public String getBoard() {
 			
-		return "QnA" ; //Model의 밸류값이 됨
+		return "Qna" ; //Model의 밸류값이 됨
 	}
 	
 	
@@ -63,12 +64,12 @@ public class QnaController {
 		return "board/form";
 	}
 	@PostMapping("add")
-	public String add(QnaDTO qnaDTO, HttpSession session) throws Exception {
+	public String add(QnaDTO qnaDTO, MultipartFile[] files, HttpSession session) throws Exception {
 		
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		qnaDTO.setBoardWriter(memberDTO.getMember_id());
 		
-		int result = qnaService.add(qnaDTO);
+		int result = qnaService.add(qnaDTO, files, session);
 		
 		return "redirect:./list";
 	}

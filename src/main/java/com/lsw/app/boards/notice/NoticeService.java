@@ -2,13 +2,18 @@ package com.lsw.app.boards.notice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.lsw.app.boards.BoardDAO;
 import com.lsw.app.boards.BoardDTO;
+import com.lsw.app.boards.BoardFileDTO;
 import com.lsw.app.boards.BoardService;
+import com.lsw.app.files.FileManager;
 import com.lsw.app.util.Pager;
 
 @Service
@@ -17,6 +22,9 @@ public class NoticeService implements BoardService {
 	@Autowired
 	@Qualifier("noticeDAO")
 	private BoardDAO boardDAO;
+	
+	@Autowired
+	private FileManager fileManager;
 	
 	
 	@Override
@@ -38,9 +46,32 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int add(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return boardDAO.add(boardDTO);
+	public int add(BoardDTO boardDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
+		
+		int result = boardDAO.add(boardDTO);
+		
+		String path = session.getServletContext().getRealPath("resources/upload/Notice");
+		
+		if (multipartFiles == null) {
+			return result;
+		}
+		
+		for (MultipartFile f : multipartFiles) {
+			if (f.isEmpty()) {
+				continue;
+			}
+			String fileName = fileManager.fileSave(path, f);
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(f.getOriginalFilename());
+			result = boardDAO.addFile(boardFileDTO);
+		}
+		
+		
+		
+		
+		
+		return result;
 	}
 
 	@Override

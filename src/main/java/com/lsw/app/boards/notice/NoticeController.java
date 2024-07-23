@@ -3,6 +3,8 @@ package com.lsw.app.boards.notice;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +12,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.lsw.app.boards.BoardDTO;
+import com.lsw.app.member.MemberDTO;
 import com.lsw.app.product.ProductDTO;
 import com.lsw.app.util.Pager;
 
@@ -88,8 +92,12 @@ public class NoticeController {
 		return "board/add";
 	}
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public String add(NoticeDTO noticeDTO, Model model) throws Exception {
-		int result = noticeService.add(noticeDTO);
+	public String add(NoticeDTO noticeDTO, Model model, MultipartFile[] files, HttpSession session) throws Exception {
+		
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		noticeDTO.setBoardWriter(memberDTO.getMember_id());
+		
+		int result = noticeService.add(noticeDTO, files, session);
 
 		String url = "";
 		if (result > 0) {

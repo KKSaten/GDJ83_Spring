@@ -1,17 +1,26 @@
 package com.lsw.app.product;
 
+import java.util.List;
+
 public class ProductDTO {
 	
-	private Integer item_id;
+	private Long item_id;
 	private String item_name;
 	private String item_detail;
 	private Double item_rate;
+	private List<ProductFileDTO> fileDTOs;
 	
 	
-	public Integer getItem_id() {
+	public List<ProductFileDTO> getFileDTOs() {
+		return fileDTOs;
+	}
+	public void setFileDTOs(List<ProductFileDTO> fileDTOs) {
+		this.fileDTOs = fileDTOs;
+	}
+	public Long getItem_id() {
 		return item_id;
 	}
-	public void setItem_id(Integer item_id) {
+	public void setItem_id(Long item_id) {
 		this.item_id = item_id;
 	}
 	public String getItem_name() {

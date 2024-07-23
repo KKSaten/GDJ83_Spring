@@ -29,13 +29,31 @@
 	</select>
 
 
-	<select id="getDetail" resultType="NoticeDTO"
-		parameterType="NoticeDTO">
-		SELECT BOARDNUM, BOARDWRITER, BOARDTITLE, BOARDCONTENTS, CREATEDATE, UPDATEDATE, BOARDHIT
-		FROM NOTICE
-		WHERE
-		BOARDNUM=#{boardNum}
-	</select>
+	<select id="getDetail" parameterType="NoticeDTO" resultMap="detailResult">
+	  	SELECT N.*, NF.* 
+  		FROM NOTICE N
+  			 LEFT JOIN
+  			 NOTICEFILES NF 
+  			 ON N.boardNum = NF.boardNum
+  		WHERE N.BOARDNUM=#{boardNum}
+  	</select>  
+
+  	<resultMap type="NoticeDTO" id="detailResult">
+  		<id column="BOARDNUM" property="boardNum"/>
+  		<result column="BOARDWRITER" property="boardWriter"/>
+  		<result column="BOARDCONTENTS" property="boardContents"/>
+  		<result column="BOARDTITLE" property="boardTitle"/>
+  		<result column="CREATEDATE" property="createDate"/>
+  		<result column="UPDATEDATE" property="updateDate"/>
+  		<result column="BOARDHIT" property="boardHit"/>
+  		<result column="BOARDCATEGORY" property="boardCategory"/>
+  		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+  			<id column="FILENUM" property="fileNum"/>
+  			<result column="FILENAME" property="fileName"/>
+  			<result column="ORINAME" property="oriName"/>  		
+  		</collection>
+  	</resultMap>	
+
 
 
 	<delete id="delete" parameterType="NoticeDTO">
@@ -52,6 +70,11 @@
 		VALUES(BOARD_NUM_SEQ.NEXTVAL, #{boardWriter}, #{boardTitle}, SYSDATE,
 		0, #{boardContents})
 	</insert>
+	
+	<insert id="addFile" parameterType="BoardFileDTO">
+  		INSERT INTO NOTICEFILES
+  		VALUES(#{boardNum}, FILES_SEQ.NEXTVAL, #{fileName}, #{oriName})	
+  	</insert>
 
 
 	<update id="update" parameterType="NoticeDTO">

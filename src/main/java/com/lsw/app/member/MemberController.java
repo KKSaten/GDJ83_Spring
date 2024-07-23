@@ -35,6 +35,7 @@ public class MemberController {
 	public String join(Model model, MemberDTO memberDTO, MultipartFile files, HttpSession session) throws Exception {
 		
 		System.out.println(session.getServletContext());
+		System.out.println(memberDTO.getMember_id());
 		System.out.println(files.getName());
 		System.out.println(files.getOriginalFilename());
 		System.out.println(files.getSize());

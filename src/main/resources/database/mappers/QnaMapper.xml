@@ -47,19 +47,49 @@
 	</select>
 	
 	
-	<select id="detail" parameterType="QnaDTO" resultType="QnaDTO">
-		SELECT * FROM QNA WHERE BOARDNUM = #{boardNum} AND DEL=0
-	</select>
+	<select id="detail" parameterType="QnaDTO" resultMap="detailResult">	
+		SELECT Q.*, QF.* 
+  		FROM QNA Q
+  			 LEFT JOIN
+  			 QNAFILES QF 
+  			 ON Q.boardNum = QF.boardNum
+  		WHERE Q.BOARDNUM=#{boardNum}
+  	</select>  
+
+  	<resultMap type="QnaDTO" id="detailResult">
+  		<id column="BOARDNUM" property="boardNum"/>
+  		<result column="BOARDWRITER" property="boardWriter"/>
+  		<result column="BOARDCONTENTS" property="boardContents"/>
+  		<result column="BOARDTITLE" property="boardTitle"/>
+  		<result column="CREATEDATE" property="createDate"/>
+  		<result column="UPDATEDATE" property="updateDate"/>
+  		<result column="BOARDHIT" property="boardHit"/>
+  		<result column="BOARDCATEGORY" property="boardCategory"/>
+  		<result column="REF" property="ref"/>
+  		<result column="STEP" property="step"/>
+  		<result column="DEPTH" property="depth"/>
+  		<result column="DEL" property="del"/>
+  		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+  			<id column="FILENUM" property="fileNum"/>
+  			<result column="FILENAME" property="fileName"/>
+  			<result column="ORINAME" property="oriName"/>  		
+  		</collection>
+  	</resultMap>
 
 	
 	<insert id="add" parameterType="QnaDTO">
 		INSERT INTO QNA
 		(BOARDNUM, BOARDWRITER, BOARDTITLE, CREATEDATE, UPDATEDATE,
-		BOARDHIT, BOARDCONTENTS, BOARDCATEGORY, REF, STEP, DEPTH)
+		BOARDHIT, BOARDCONTENTS, BOARDCATEGORY, REF, STEP, DEPTH, DEL)
 		VALUES
-		(BOARD_NUM_SEQ.NEXTVAL, #{boardWriter}, #{boardTitle}, SYSDATE, SYSDATE,
-		0, #{boardContents}, 'Q', BOARD_NUM_SEQ.CURRVAL, 0, 0)
+		(#{boardNum}, #{boardWriter}, #{boardTitle}, SYSDATE, SYSDATE,
+		0, #{boardContents}, 'Q', #{boardNum}, 0, 0, 0)
 	</insert>
+	
+	<insert id="addFile" parameterType="BoardFileDTO">
+  		INSERT INTO QNAFILES
+  		VALUES (#{boardNum}, FILES_SEQ.NEXTVAL, #{fileName}, #{oriName})	
+  	</insert>
 	
 	
 	<update id="update" parameterType="QnaDTO">

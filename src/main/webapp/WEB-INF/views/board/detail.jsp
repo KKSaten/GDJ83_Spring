@@ -86,6 +86,13 @@
 						</tbody>
 						</tbody>
 					</table>
+					
+					
+					<div>
+						<c:forEach items="${boardDTO.boardFileDTOs}" var="f">
+							<a href="/resources/upload/${board}/${f.fileName}">${f.oriName}</a>
+						</c:forEach>
+					</div>
 
 
 					<div class="d-grid gap-2 d-md-flex justify-content-end">

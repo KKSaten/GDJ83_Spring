@@ -1,13 +1,20 @@
 package com.lsw.app.product;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.lsw.app.files.FileManager;
 import com.lsw.app.util.Pager;
 
 @Service
@@ -15,6 +22,9 @@ public class ProductService {
 	
 	@Autowired
 	private ProductDAO productDAO;
+	
+	@Autowired
+	private FileManager fileManager;
 	
 	public List<ProductDTO> getList(Pager pager) throws Exception {
 		//page가 1이면		2라면		3		4
@@ -36,8 +46,57 @@ public class ProductService {
 		return productDAO.getDetail(productDTO);
 	}
 	
-	public int add(ProductDTO productDTO) throws Exception {
-		return productDAO.add(productDTO);
+	public int add(ProductDTO productDTO, MultipartFile[] files, HttpSession session) throws Exception {
+		
+		Long num = productDAO.getNum();
+		
+		productDTO.setItem_id(num);
+		
+		int result = productDAO.add(productDTO);
+
+		if (files == null) {
+			return result;
+		}
+		
+
+		// 1. 저장할 폴더 지정
+		ServletContext servletContext = session.getServletContext();
+		String path = servletContext.getRealPath("resources/upload/products");
+		System.out.println(path);
+//		File file = new File(path);
+//
+//		if (!file.exists()) {
+//			file.mkdirs();
+//		}
+
+		for (MultipartFile f : files) {
+			if (f.isEmpty()) {
+				continue;
+			}
+
+//			// 2. 저장할 파일명 생성
+//			String fileName = UUID.randomUUID().toString();
+//			fileName = fileName + "_" + f.getOriginalFilename();
+//
+//			// 3. HDD에 파일 저장
+//			File f2 = new File(file, fileName);
+//			f.transferTo(f2);
+			
+			String fileName = fileManager.fileSave(path, f); //위에 주석처리된 놈들 이녀석으로
+
+			// 4. 파일정보를 DB에 저장
+			// 파일명, 오리지널, 파일번호, 제품id
+			ProductFileDTO productFileDTO = new ProductFileDTO();
+			productFileDTO.setFileName(fileName);
+			productFileDTO.setOriName(f.getOriginalFilename());
+			productFileDTO.setItem_id(num);
+			result = productDAO.addFile(productFileDTO);
+
+		}
+		
+		
+		
+		return result;
 	}
 	
 	public int delete(ProductDTO productDTO) throws Exception {

@@ -92,6 +92,11 @@
 				<button type="submit" class="btn btn-danger">상품 삭제</button>
 			</form>
 		</div>
+		<div>
+			<c:forEach items="${dto.fileDTOs}" var="f">
+				<a href="/resources/upload/products/${f.fileName}">${f.oriName}</a>
+			</c:forEach>
+		</div>
 	</div>
 	</section>
 

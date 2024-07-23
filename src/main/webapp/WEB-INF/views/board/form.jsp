@@ -33,7 +33,7 @@
 	</header>
 	<div class="row justify-content-center">
 		<div class="col-lg-6 col-xl-6">
-			<form method="post">
+			<form method="post" enctype="multipart/form-data">
 				<!-- action은 생략이 가능한데 생략시 현재주소가 url로 들어감 -->
 
 				<input type="hidden" value="${dto.boardNum}" name="boardNum">
@@ -55,12 +55,26 @@
 						<label for="boardContents">글내용</label>
 					<div class="invalid-feedback" data-sb-feedback="boardContents:required">A boardTitle is	required.</div>
 				</div>
+				
+				<div>
+                	<button type="button" class="btn btn-outline-primary"
+                	id="add">첨부파일추가</button>
+                	<div id="result"></div>
+                </div>
 
 				<button type="submit" class="btn btn-primary btn-l" style="margin-left: 700px;margin-bottom: 20px; ">Send</button>
 			</form>
 		</div>
 	</div>
-
+	
+	
+	
+	
+	
+	<script type="text/javascript" src="/resources/js/commons/files.js"></script>
+	<script type="text/javascript">
+		setMax(5);
+	</script>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
