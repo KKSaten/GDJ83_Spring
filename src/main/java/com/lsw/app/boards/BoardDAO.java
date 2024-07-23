@@ -20,6 +20,9 @@ public interface BoardDAO {
 	//addFile
 	public int addFile(BoardFileDTO boardFileDTO) throws Exception;
 	
+	//getNum
+	public Long getNum() throws Exception;
+	
 	//update
 	int update(BoardDTO boardDTO) throws Exception;
 	

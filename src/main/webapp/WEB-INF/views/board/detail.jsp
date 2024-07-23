@@ -1,66 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- c태그 사용 -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>연습용 웹페이지</title>
-<c:import url="../template/header_css.jsp"></c:import>
+<title>Insert title here</title>
+<c:import url="/WEB-INF/views/sample/bootHeader.jsp"></c:import>
 </head>
-<body id="page-top">
+<body class="sb-nav-fixed">
+	<c:import url="/WEB-INF/views/sample/header.jsp"></c:import>
+	<div id="layoutSidenav">
+		<c:import url="/WEB-INF/views/sample/sideBar.jsp"></c:import>
+		<div id="layoutSidenav_content">
 
-	<c:import url="../template/nav.jsp"></c:import>
-	<header class="masthead bg-primary text-white text-center">
-		<div class="container d-flex align-items-center flex-column">
-			<!-- Masthead Avatar Image-->
-			<img class="masthead-avatar mb-5"
-				src="/resources/assets/img/avataaars.svg" alt="..." />
-			<!-- Masthead Heading-->
-			<%-- 			<h1 class="masthead-heading text-uppercase mb-0">
-				-${dto.item_name}-
-</h1> --%>
-			<!-- Icon Divider-->
-			<div class="divider-custom divider-light">
-				<div class="divider-custom-line"></div>
-				<div class="divider-custom-icon">
-					<i class="fas fa-star"></i>
-				</div>
-				<div class="divider-custom-line"></div>
-			</div>
-			<!-- Masthead Subheading-->
-			<p class="masthead-subheading font-weight-light mb-0">Graphic
-				Artist - Web Designer - Illustrator</p>
-		</div>
-	</header>
 
-	<!-- About Section-->
+			<div class="container col-md-6 mt-5">
+				<h1>
+					<c:choose>
+						<c:when test="${board=='Notice'}">
+							공지사항
+						</c:when>
+						<c:when test="${board=='Qna'}">
+							QnA
+						</c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+				</h1>
+				<div class="row justify-content-center mt-5">
 
-	<section class="page-section portfolio" id="portfolio">
-
-		<div class="container">
-			<!-- Portfolio Section Heading-->
-
-			<!-- Icon Divider-->
-			<div class="divider-custom">
-				<div class="divider-custom-line"></div>
-				<div class="divider-custom-icon">
-					<i class="fas fa-star"></i>
-				</div>
-				<div class="divider-custom-line"></div>
-			</div>
-			<div class="container col-md-8 mt-8 justify-content-center">
-				<div
-					class="page-section-heading text-center text-uppercase text-secondary mb-0">
-					<h3>${board}</h3>
-				</div>
-				<div class="divider-custom">
-
-					<table class="table table-hover"
-						style="text-align: center; margin-top: 30px; width: 70%;">
-						<thead
-							class="page-section-heading text-center text-uppercase text-secondary mb-0"
-							style="font-size: 1.5rem;">
+					<table class="table table-striped table-hover">
+						<thead>
 							<tr>
 								<th scope="col">번호</th>
 								<th scope="col">제목</th>
@@ -70,9 +41,7 @@
 								<th scope="col">조회수</th>
 							</tr>
 						</thead>
-						<tbody
-							class="page-section-heading text-center text-uppercase text-secondary mb-0"
-							style="font-size: 1rem;">
+						<tbody>
 						<tbody>
 							<tr>
 								<td>${dto.boardNum}</td>
@@ -83,15 +52,26 @@
 								<td>${dto.boardHit}</td>
 							</tr>
 
-						</tbody>
+							<tr>
+								<td colspan="6">${dto.boardContents}</td>
+							</tr>
+
 						</tbody>
 					</table>
 					
 					
 					<div>
-						<c:forEach items="${boardDTO.boardFileDTOs}" var="f">
-							<a href="/resources/upload/${board}/${f.fileName}">${f.oriName}</a>
+						<c:if test="${board=='Notice'}">
+						<c:forEach items="${dto.boardFileDTOs}" var="v">
+							<a href="/resources/upload/Notice/${v.fileName}">${v.oriName}</a>
 						</c:forEach>
+						</c:if>
+			
+						<c:if test="${board=='Qna'}">
+						<c:forEach items="${dto.boardFileDTOs}" var="v">
+							<a href="/resources/upload/qna/${v.fileName}">${v.oriName}</a>
+						</c:forEach>
+						</c:if>
 					</div>
 
 
@@ -99,10 +79,8 @@
 						<c:if test="${board ne 'Notice'}">
 							<button type="submit"
 								onclick="location.href='./reply?boardNum=${dto.boardNum}'"
-								class="btn btn-outline-primary me-md-2"
-								style="margin-left: 20px; margin-top: 180px;">답글</button>
+								class="btn btn-outline-primary me-md-2">답글</button>
 						</c:if>
-
 
 						<c:if test="${member.member_id eq dto.boardWriter}">
 							<button type="submit"
@@ -114,12 +92,24 @@
 							</form>
 						</c:if>
 					</div>
+
 				</div>
 			</div>
+
+
+
+
+
+
+
+
+
+
+
+			<c:import url="/WEB-INF/views/sample/footer.jsp"></c:import>
 		</div>
+	</div>
 
-	</section>
-
-	<c:import url="../template/footer.jsp"></c:import>
+	<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
 </body>
 </html>

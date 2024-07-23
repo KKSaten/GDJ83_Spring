@@ -23,6 +23,8 @@
 		
 		<typeAlias type="com.lsw.app.files.FileDTO" alias="FileDTO"/>
 		<typeAlias type="com.lsw.app.boards.BoardFileDTO" alias="BoardFileDTO"/>
+		<typeAlias type="com.lsw.app.boards.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
+		<typeAlias type="com.lsw.app.boards.qna.QnaFileDTO" alias="QnaFileDTO"/>
 		<typeAlias type="com.lsw.app.member.MemberFileDTO" alias="MemberFileDTO"/>
 		<typeAlias type="com.lsw.app.product.ProductFileDTO" alias="ProductFileDTO"/>
 		

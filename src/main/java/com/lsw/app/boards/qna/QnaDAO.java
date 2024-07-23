@@ -14,6 +14,8 @@ import com.lsw.app.util.Pager;
 @Repository
 public class QnaDAO implements BoardDAO{
 	
+
+
 	@Autowired
 	private SqlSession sqlSession;
 	
@@ -38,6 +40,12 @@ public class QnaDAO implements BoardDAO{
 	public int add(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.insert(NAMESPACE+"add", boardDTO);
+	}
+	
+	@Override
+	public Long getNum() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE + "getNum");
 	}
 
 	@Override

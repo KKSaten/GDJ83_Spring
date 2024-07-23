@@ -45,26 +45,29 @@ public class QnaService implements BoardService {
 	@Override
 	public int add(BoardDTO boardDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
 		
+		Long num = qnaDAO.getNum();
+		boardDTO.setBoardNum(num);
+		
 		int result = qnaDAO.add(boardDTO);
 		
-		String path = session.getServletContext().getRealPath("resources/upload/Qna");
 
 		if (multipartFiles == null) {
 			return result;
 		}
-
+		
+		String path = session.getServletContext().getRealPath("resources/upload/qna");
+		
 		for (MultipartFile f : multipartFiles) {
 			if (f.isEmpty()) {
 				continue;
 			}
+			
 			String fileName = fileManager.fileSave(path, f);
-			BoardFileDTO boardFileDTO = new BoardFileDTO();
-
-			boardFileDTO.setBoardNum(boardDTO.getBoardNum());
-
-			boardFileDTO.setFileName(fileName);
-			boardFileDTO.setOriName(f.getOriginalFilename());
-			result = qnaDAO.addFile(boardFileDTO);
+			QnaFileDTO qnaFileDTO = new QnaFileDTO();
+			qnaFileDTO.setBoardNum(num);
+			qnaFileDTO.setFileName(fileName);
+			qnaFileDTO.setOriName(f.getOriginalFilename());
+			result = qnaDAO.addFile(qnaFileDTO);
 		}
 			
 		return result;
@@ -88,7 +91,7 @@ public class QnaService implements BoardService {
 		return qnaDAO.hit(boardDTO);
 	}
 
-	public int reply(QnaDTO qnaDTO) throws Exception {
+	public int reply(QnaDTO qnaDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
 		QnaDTO parent = (QnaDTO)qnaDAO.detail(qnaDTO);
 		//1. step을 1씩 업데이트
 		int result = qnaDAO.replyUpdate(parent);
@@ -98,7 +101,32 @@ public class QnaService implements BoardService {
 		qnaDTO.setStep(parent.getStep()+1);
 		qnaDTO.setDepth(parent.getDepth()+1);
 		
-		return qnaDAO.reply(qnaDTO);
+		
+		result = qnaDAO.reply(qnaDTO);
+
+		// 파일 저장
+		String path = session.getServletContext().getRealPath("resources/upload/Qna");
+
+		if (multipartFiles == null) {
+			return result;
+		}
+
+		for (MultipartFile f : multipartFiles) {
+			if (f.isEmpty()) {
+				continue;
+			}
+
+			String fileName = fileManager.fileSave(path, f);
+			QnaFileDTO qnaFileDTO = new QnaFileDTO();
+			qnaFileDTO.setBoardNum(qnaDTO.getBoardNum());
+			qnaFileDTO.setFileName(fileName);
+			qnaFileDTO.setOriName(f.getOriginalFilename());
+			result = qnaDAO.addFile(qnaFileDTO);
+		}
+		
+		
+		return result;
+		
 	}
 	
 	

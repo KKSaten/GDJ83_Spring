@@ -15,11 +15,7 @@ import com.lsw.app.util.Pager;
 @Repository
 public class NoticeDAO implements BoardDAO{
 	
-	@Override
-	public int addFile(BoardFileDTO boardFileDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.insert(NAMESPACE + "addFile", boardFileDTO);
-	}
+
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -48,6 +44,18 @@ public class NoticeDAO implements BoardDAO{
 	public int add(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.insert(NAMESPACE + "add", boardDTO);
+	}
+	
+	@Override
+	public int addFile(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE + "addFile", boardFileDTO);
+	}
+	
+	@Override
+	public Long getNum() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE + "getNum");
 	}
 
 	@Override

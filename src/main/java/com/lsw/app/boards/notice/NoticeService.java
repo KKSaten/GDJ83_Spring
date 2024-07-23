@@ -48,28 +48,32 @@ public class NoticeService implements BoardService {
 	@Override
 	public int add(BoardDTO boardDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
 		
+		Long num = boardDAO.getNum();
+		boardDTO.setBoardNum(num);
+		
 		int result = boardDAO.add(boardDTO);
 		
-		String path = session.getServletContext().getRealPath("resources/upload/Notice");
 		
 		if (multipartFiles == null) {
 			return result;
 		}
 		
+		String path = session.getServletContext().getRealPath("resources/upload/Notice");
+		
+		System.out.println(path);
+		
 		for (MultipartFile f : multipartFiles) {
 			if (f.isEmpty()) {
 				continue;
 			}
+			
 			String fileName = fileManager.fileSave(path, f);
-			BoardFileDTO boardFileDTO = new BoardFileDTO();
-			boardFileDTO.setFileName(fileName);
-			boardFileDTO.setOriName(f.getOriginalFilename());
-			result = boardDAO.addFile(boardFileDTO);
+			NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
+			noticeFileDTO.setBoardNum(num);
+			noticeFileDTO.setFileName(fileName);
+			noticeFileDTO.setOriName(f.getOriginalFilename());
+			result = boardDAO.addFile(noticeFileDTO);
 		}
-		
-		
-		
-		
 		
 		return result;
 	}

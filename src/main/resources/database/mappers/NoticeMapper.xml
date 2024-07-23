@@ -63,11 +63,14 @@
 
 	</delete>
 
+	<select id="getNum" resultType="java.lang.Long">
+   		SELECT BOARD_NUM_SEQ.NEXTVAL FROM DUAL
+   	</select>
 
 	<insert id="add" parameterType="NoticeDTO">
 		INSERT INTO NOTICE(BOARDNUM,
 		BOARDWRITER, BOARDTITLE, CREATEDATE, BOARDHIT, BOARDCONTENTS)
-		VALUES(BOARD_NUM_SEQ.NEXTVAL, #{boardWriter}, #{boardTitle}, SYSDATE,
+		VALUES(#{boardNum}, #{boardWriter}, #{boardTitle}, SYSDATE,
 		0, #{boardContents})
 	</insert>
 	

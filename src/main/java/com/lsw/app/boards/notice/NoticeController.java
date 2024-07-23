@@ -89,7 +89,7 @@ public class NoticeController {
 
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String add(){
-		return "board/add";
+		return "board/form";
 	}
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String add(NoticeDTO noticeDTO, Model model, MultipartFile[] files, HttpSession session) throws Exception {
@@ -117,7 +117,7 @@ public class NoticeController {
 		String url = "";
 		if (boardDTO != null) {
 			model.addAttribute("dto", boardDTO);
-			url = "./update";
+			url = "board/form";
 		} else {
 			model.addAttribute("result", "없는 게시글입니다.");
 			model.addAttribute("url", "./list");
@@ -131,7 +131,7 @@ public class NoticeController {
 		
 		int result = noticeService.update(noticeDTO);
 
-		return "redirect:board/list";
+		return "redirect:./list";
 
 	}
 	
