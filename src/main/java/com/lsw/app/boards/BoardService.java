@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.lsw.app.files.FileDTO;
 import com.lsw.app.util.Pager;
 
 public interface BoardService {
@@ -28,5 +29,7 @@ public interface BoardService {
 	//hit
 	public int hit(BoardDTO boardDTO) throws Exception;
 	
+	//file 다운로드
+	public FileDTO fileDetail(FileDTO fileDTO) throws Exception;
 
 }

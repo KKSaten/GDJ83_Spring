@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lsw.app.files.FileManager;
+import com.lsw.app.member.MemberDTO;
 import com.lsw.app.util.Pager;
+import com.lsw.app.util.ProductCommentPager;
 
 @Service
 public class ProductService {
@@ -105,6 +107,36 @@ public class ProductService {
 	
 	public int update(ProductDTO productDTO) throws Exception {
 		return productDAO.update(productDTO);
+	}
+	
+	
+	public int addWish(Integer item_id, String member_id) throws Exception {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("item_id", item_id);
+		map.put("member_id", member_id);
+
+		return productDAO.addWish(map);
+
+	}
+
+	public List<ProductDTO> wishList(MemberDTO memberDTO) throws Exception {
+		return productDAO.wishList(memberDTO);
+	}
+	
+	public int commentAdd(ProductCommentDTO productCommentDTO) throws Exception {
+		return productDAO.commentAdd(productCommentDTO);
+	}
+	
+	public List<ProductCommentDTO> commentList(ProductCommentPager productCommentPager) throws Exception {
+		productCommentPager.makeRow();
+		productCommentPager.makeNum(productDAO.commentTotalCount(productCommentPager));
+		
+		return productDAO.commentList(productCommentPager);
+	}
+	
+	public int commentDelete(ProductCommentDTO productCommentDTO) throws Exception {
+		return productDAO.commentDelete(productCommentDTO);
 	}
 
 }

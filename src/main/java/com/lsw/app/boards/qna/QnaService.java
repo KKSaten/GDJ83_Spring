@@ -12,12 +12,15 @@ import com.lsw.app.boards.BoardDAO;
 import com.lsw.app.boards.BoardDTO;
 import com.lsw.app.boards.BoardFileDTO;
 import com.lsw.app.boards.BoardService;
+import com.lsw.app.files.FileDTO;
 import com.lsw.app.files.FileManager;
 import com.lsw.app.util.Pager;
 
 @Service
 public class QnaService implements BoardService {
 	
+
+
 	@Autowired
 	private QnaDAO qnaDAO;
 	
@@ -89,6 +92,12 @@ public class QnaService implements BoardService {
 	public int hit(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return qnaDAO.hit(boardDTO);
+	}
+	
+	@Override
+	public FileDTO fileDetail(FileDTO fileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDAO.fileDetail(fileDTO);
 	}
 
 	public int reply(QnaDTO qnaDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {

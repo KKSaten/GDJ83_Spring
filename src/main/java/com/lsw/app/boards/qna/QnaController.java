@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lsw.app.boards.BoardDTO;
+import com.lsw.app.files.FileDTO;
 import com.lsw.app.member.MemberDTO;
 import com.lsw.app.util.Pager;
 
@@ -116,5 +117,13 @@ public class QnaController {
 		
 		return "redirect:./list";
 	}
+	
+	@GetMapping("fileDown")
+	public String fileDown(FileDTO fileDTO, Model model) throws Exception {
+		fileDTO = qnaService.fileDetail(fileDTO);
+		model.addAttribute("file", fileDTO);
+		return "fileDown";
+	}
+	
 	
 }

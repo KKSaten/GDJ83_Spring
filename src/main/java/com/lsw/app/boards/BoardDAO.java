@@ -2,6 +2,7 @@ package com.lsw.app.boards;
 
 import java.util.List;
 
+import com.lsw.app.files.FileDTO;
 import com.lsw.app.util.Pager;
 
 public interface BoardDAO {
@@ -34,4 +35,10 @@ public interface BoardDAO {
 	
 	//hit
 	int hit(BoardDTO boardDTO) throws Exception;
+	
+	//file 다운로드
+	public FileDTO fileDetail(FileDTO fileDTO) throws Exception;
+	
+	
+	
 }

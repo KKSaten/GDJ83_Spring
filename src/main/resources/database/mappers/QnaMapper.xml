@@ -136,6 +136,11 @@
 		WHERE BOARDNUM = #{boardNum}
 	</update>
 	
+	
+	<select id="fileDetail" parameterType="FileDTO" resultType="FileDTO">
+  		SELECT * FROM QNAFILES WHERE FILENUM=#{fileNum}
+  	</select>
+	
 
 
 </mapper>

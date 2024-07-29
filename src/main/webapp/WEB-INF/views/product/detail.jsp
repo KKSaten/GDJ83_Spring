@@ -70,7 +70,50 @@
 			</div>
 			
 			
-			
+			<!-- 댓글 -->
+			<div class="container col-md-5 mt-5 justify-content-center">
+				<!-- 댓글 입력 모달창 -->
+				<div>
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal">
+					  댓글
+					</button>
+					
+					<!-- Modal -->
+					<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					    
+					      <div class="modal-header">
+					        <h1 class="modal-title fs-5" id="exampleModalLabel">댓글</h1>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					      </div>
+					      
+					      <div class="modal-body">
+					        <div class="mb-3">
+							  <textarea class="form-control" id="commentContents" rows="3"></textarea>
+							</div>
+					      </div>
+					      
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="commentClose">취소</button>
+					        <button type="button" class="btn btn-primary" data-id="${dto.item_id}" id="commentButton">등록</button>
+					      </div>
+					      
+					    </div>
+					  </div>
+					</div>
+				</div>
+
+				<div id="commentList">
+					
+				</div>
+				
+				
+				
+				
+				
+			</div>
 			
 			
 			
@@ -82,5 +125,7 @@
 	</div>
 	
 	<c:import url="/WEB-INF/views/sample/bootFooter.jsp"></c:import>
+	
+	<script type="text/javascript" src="/resources/js/commons/comment.js"></script>
 </body>
 </html>

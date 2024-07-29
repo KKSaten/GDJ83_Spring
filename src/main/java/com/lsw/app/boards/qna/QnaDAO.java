@@ -9,11 +9,14 @@ import org.springframework.stereotype.Repository;
 import com.lsw.app.boards.BoardDAO;
 import com.lsw.app.boards.BoardDTO;
 import com.lsw.app.boards.BoardFileDTO;
+import com.lsw.app.files.FileDTO;
 import com.lsw.app.util.Pager;
 
 @Repository
 public class QnaDAO implements BoardDAO{
 	
+
+
 
 
 	@Autowired
@@ -76,6 +79,12 @@ public class QnaDAO implements BoardDAO{
 	public int hit(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.update(NAMESPACE + "hit", boardDTO);
+	}
+	
+	@Override
+	public FileDTO fileDetail(FileDTO fileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE + "fileDetail", fileDTO);
 	}
 	
 	public int reply(QnaDTO qnaDTO) throws Exception {

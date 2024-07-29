@@ -3,12 +3,8 @@ package com.lsw.app.boards;
 import java.sql.Date;
 import java.util.List;
 
-public class BoardDTO {
-	private Long boardNum;
-	private String boardWriter;
+public class BoardDTO extends CommentDTO{
 	private String boardTitle;
-	private String boardContents;
-	private Date createDate;
 	private Date updateDate;
 	private String boardCategory;
 	private Integer boardHit;
@@ -31,35 +27,11 @@ public class BoardDTO {
 		this.del = del;
 	}
 	
-	public Long getBoardNum() {
-		return boardNum;
-	}
-	public void setBoardNum(Long boardNum) {
-		this.boardNum = boardNum;
-	}
-	public String getBoardWriter() {
-		return boardWriter;
-	}
-	public void setBoardWriter(String boardWriter) {
-		this.boardWriter = boardWriter;
-	}
 	public String getBoardTitle() {
 		return boardTitle;
 	}
 	public void setBoardTitle(String boardTitle) {
 		this.boardTitle = boardTitle;
-	}
-	public String getBoardContents() {
-		return boardContents;
-	}
-	public void setBoardContents(String boardContents) {
-		this.boardContents = boardContents;
-	}
-	public Date getCreateDate() {
-		return createDate;
-	}
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
 	}
 	public Date getUpdateDate() {
 		return updateDate;

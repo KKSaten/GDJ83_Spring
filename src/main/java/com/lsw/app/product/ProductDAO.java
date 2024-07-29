@@ -5,12 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.lsw.app.member.MemberDTO;
 import com.lsw.app.util.Pager;
+import com.lsw.app.util.ProductCommentPager;
 
 @Repository
 public class ProductDAO {
@@ -59,8 +62,30 @@ public class ProductDAO {
 		return sqlSession.update(NAMESPACE+"update", productDTO);	
 	}
 	
+	public int addWish(Map<String, Object> map) throws Exception {
+		return sqlSession.insert(NAMESPACE + "addWish", map);
+	}
 
+	public List<ProductDTO> wishList(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "wishList", memberDTO);
+	}
 	
+	
+	public int commentAdd(ProductCommentDTO productCommentDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"commentAdd", productCommentDTO);
+	}
+	
+	public List<ProductCommentDTO> commentList(ProductCommentPager productCommentPager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"commentList", productCommentPager);
+	}
+	
+	public Long commentTotalCount(ProductCommentPager productCommentPager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"commentTotalCount", productCommentPager);
+	}
 
-
+	public int commentDelete(ProductCommentDTO productCommentDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"commentDelete", productCommentDTO);
+	}
+	
+	
 }
