@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -172,8 +173,17 @@ public class ProductController {
 	
 	
 	
-
-	
-	
+	@ExceptionHandler(NullPointerException.class) //예외처리에 대해 세부적으로 처리하고 싶을 때 이렇게 쓰기도 함
+	public void exceptionHandler() {
+		
+	}
+	@ExceptionHandler(Exception.class)//이건 그냥 exception 한방에 처리. 여기서 만들면 product쪽의 예외만 처리
+	public void exceptionHandler2() {
+		
+	}
+	@ExceptionHandler(Throwable.class)//만약에 Exception 클래스로도 못받으면 이렇게. exception 계의 가장 부모 클래스
+	public void exceptionHandler3() {
+		
+	}
 
 }
